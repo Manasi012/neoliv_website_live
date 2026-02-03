@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neoliv ESG Micro Site</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&family=Source+Serif+Pro:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="https://neoliv.in/favicon.ico" />
+
+    <!-- AOS (Animate On Scroll) -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- START: CSS Overrides to address size issues -->
+    <style>
+      /* General Typography Adjustments */
+      body {
+        font-family: "Poppins", sans-serif; /* Ensuring a consistent base font */
+        font-size: 16px; /* Standard base font size */
+        line-height: 1.6;
+        color: #333; /* A slightly softer black for body text */
+      }
+
+      h1,
+      .h1,
+      h2,
+      .h2,
+      h3,
+      .h3,
+      h4,
+      .h4,
+      h5,
+      .h5,
+      h6,
+      .h6 {
+        font-family: "Poppins", sans-serif; /* Or 'DM Sans' / 'Source Serif Pro' if preferred for headings */
+        font-weight: 600; /* Common weight for headings */
+      }
+
+      /* Hero Section Adjustments */
+      .hero-title {
+        font-size: 2.8rem; /* Reduced from potentially larger size */
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+      .policy-content-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-left: 4px solid #2c7a7b; /* Luxury accent color */
+}
+
+.policy-content-wrapper .policy-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.policy-content-wrapper .policy-title::before {
+  content: "●";
+  position: absolute;
+  left: -1.8rem;
+  color: #2c7a7b;
+  font-size: 1.1rem;
+  top: 0.1rem;
+}
+
+.policy-content-wrapper p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 767.98px) {
+  .policy-content-wrapper {
+    border-left: 3px solid #2c7a7b;
+    padding-left: 1.2rem;
+  }
+  .policy-content-wrapper .policy-title::before {
+    left: -1.4rem;
+  }
+}
+
+
+      .hero-subtitle {
+        font-size: 1.1rem; /* Reduced */
+        font-weight: 400;
+        line-height: 1.7;
+        max-width: 700px; /* Constrain width for readability */
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons .btn-download,
+      .hero-buttons .btn-primary-green {
+        font-size: 0.9rem; /* Reduced button text size */
+        padding: 0.75rem 1.5rem; /* Adjusted padding */
+      }
+      .btn-primary-green {
+        font-weight: 500;
+      }
+
+      /* Vision Section Adjustments */
+      .section_padding {
+        /* Standardize section padding slightly */
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+
+      #vision h2.head {
+        font-size: 2.2rem; /* Reduced */
+        margin-bottom: 1rem; /* Adjusted spacing */
+      }
+      #vision h2.head img {
+        /* Adjust eye icon size if needed */
+        width: 70px;
+        height: auto;
+        vertical-align: middle;
+      }
+
+      #vision .paragraph p.text-muted,
+      #vision .col-md-6 p.text-muted.paragraph {
+        font-size: 1rem; /* Standard paragraph size */
+        line-height: 1.7;
+      }
+      #vision .paragraph p.text-muted:first-of-type {
+        margin-bottom: 0.5rem; /* Tighter spacing between the two intro paragraphs */
+      }
+
+      /* Pillars Section Adjustments */
+      .pillars-section {
+        padding-top: 40px; /* Slightly reduced top padding */
+        padding-bottom: 60px;
+      }
+      .pillars-icon svg {
+        width: 70px; /* Reduced size of the pillar SVG icon */
+        height: auto;
+      }
+
+      .pillars-header .section-title {
+        /* Target H2 within pillars-header */
+        font-size: 2.2rem; /* Reduced */
+        margin-top: 0.5rem; /* Space between icon and title */
+        margin-bottom: 1rem;
+      }
+
+      .pillars-description-gradient {
+        font-size: 1rem; /* Standard paragraph size */
+        line-height: 1.7;
+        max-width: 800px; /* Constrain width */
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .pillars-fullwidth-image {
+        margin-top: 2rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .bg-number-large {
+        font-size: 8rem; /* Significantly reduced background number size */
+        opacity: 0.07; /* Make them more subtle */
+      }
+
+      .pillar-card-final .pillar-title {
+        font-size: 1.3rem; /* Reduced pillar card title size */
+        font-weight: 600;
+        line-height: 1.4;
+      }
+      .pillar-card-final {
+        min-height: 320px; /* Adjust if cards feel too tall/short */
+      }
+
+      /* Promises Section Adjustments */
+      .promises-section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+      .promise-tab span {
+        font-size: 0.95rem; /* Slightly reduced tab text */
+        font-weight: 500;
+      }
+      .promise-tab {
+        padding: 0.8rem 1rem; /* Adjust tab padding */
+      }
+
+      .promises-content .section-title {
+        /* Target H2 within promises-content */
+        font-size: 2.2rem; /* Reduced */
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .promises-description {
+        font-size: 1rem; /* Standard paragraph size */
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.5rem;
+      }
+
+      .promise-tags .promise-tag {
+        font-size: 0.85rem; /* Smaller tags */
+        padding: 0.3rem 0.8rem;
+      }
+
+      .promise-item .promise-icon .icon-placeholder {
+        width: 50px; /* Adjust icon container size */
+        height: 50px;
+      }
+      .promise-item .promise-icon .icon-placeholder i {
+        font-size: 1.5rem; /* Adjust icon size */
+      }
+
+      .promise-item .promise-content h4 {
+        font-size: 1.15rem; /* Reduced promise item title */
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+      }
+
+      .promise-item .promise-content p {
+        font-size: 0.9rem; /* Reduced promise item text */
+        line-height: 1.6;
+      }
+
+      /* Footer Adjustments */
+      .footer-section {
+        padding-top: 50px;
+        padding-bottom: 30px;
+      }
+      .footer-section-title h5 {
+        font-size: 1.1rem; /* Reduced footer titles */
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      .footer-links-list li a.footer-link {
+        font-size: 0.9rem; /* Reduced footer link text */
+      }
+      .social-links .social-link {
+        width: 36px; /* Smaller social icons */
+        height: 36px;
+        font-size: 0.9rem;
+      }
+
+      /* Header Adjustments */
+      .header {
+        padding-top: 0.5rem; /* Reduce header padding if it's too tall */
+        padding-bottom: 0.5rem;
+      }
+      .nav-link {
+        font-size: 0.95rem; /* Adjust nav link font size */
+        font-weight: 500;
+      }
+
+      /* Responsive adjustments for smaller screens */
+      @media (max-width: 991.98px) {
+        .hero-title {
+          font-size: 2.2rem;
+        }
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+        #vision h2.head,
+        .pillars-header .section-title,
+        .promises-content .section-title {
+          font-size: 1.9rem;
+        }
+        .bg-number-large {
+          font-size: 6rem; /* Further reduce on medium screens */
+        }
+      }
+
+      @media (max-width: 767.98px) {
+        body {
+          font-size: 15px; /* Slightly smaller base for small devices */
+        }
+        .hero-title {
+          font-size: 1.8rem;
+        }
+        .hero-subtitle {
+          font-size: 0.95rem;
+        }
+        #vision h2.head,
+        .pillars-header .section-title,
+        .promises-content .section-title {
+          font-size: 1.7rem;
+        }
+        .pillar-card-final .pillar-title {
+          font-size: 1.15rem;
+        }
+        .promise-item .promise-content h4 {
+          font-size: 1.05rem;
+        }
+        .promise-item .promise-content p {
+          font-size: 0.85rem;
+        }
+        .section_padding,
+        .pillars-section,
+        .promises-section {
+          padding-top: 40px;
+          padding-bottom: 40px;
+        }
+        .bg-number-large {
+          display: none; /* Hide large background numbers on small screens if they cause clutter */
+        }
+      }
+     .icon-circle {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+.policy-wrapper {
+  /* max-width: 960px; */
+  margin: 0 auto;
+  padding: 20px;
+  color: #2d2d2d;
+}
+
+.policy-block {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 50px;
+}
+
+.policy-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.policy-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #34c759;
+  margin-top: 10px;
+}
+
+.policy-block p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1rem;
+}
+.policy-block ul {
+  margin-bottom: 0;
+  padding-left: 1.25rem;
+  line-height: 1.7;
+}
+.policy-block ul li{
+    padding-bottom: 0.8rem;
+}
+.section_padding{
+    padding-bottom: 0 !important;
+}
+
+
+
+@media (max-width: 767.98px) {
+  .policy-wrapper {
+    padding: 40px 15px;
+  }
+
+  .policy-title {
+    font-size: 1.5rem;
+  }
+
+  .policy-title::after {
+    width: 40px;
+  }
+   .mb_0{
+    margin-bottom: 0;
+ }
+
+
+  .policy-block p {
+    font-size: 1rem;
+  }
+}
+
+
+    </style>
+    <!-- END: CSS Overrides -->
+  </head>
+<body>
+   <section class="section_padding bg-light">
+  <div class="container">
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-8 text-center">
+        <h2 class="section-title">Cyber Security Policy</h2>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+          <div class="policy-wrapper">
+
+<div class="policy-block">
+  <h2 class="policy-title">Purpose</h2>
+  <p>
+    This policy outlines the standards and procedures for the use of information systems and sharing of data within the company and outside as well, to protect the confidentiality, integrity, and availability of sensitive information.
+  </p>
+
+  <h2 class="policy-title">Scope</h2>
+  <p>
+    This policy applies to all employees, individuals on third-party rolls, consultants, contractors, and third-party service providers or anyone else who has access to the company’s information systems and data.
+  </p>
+
+  <h2 class="policy-title">Information Systems Usage</h2>
+  <p>
+    The information systems (including hardware, software, and network resources) provided by the company or purchased under the BYOD Policy are intended to support business operations. The following rules apply to their usage:
+  </p>
+  <ul>
+    <li>All information systems and resources must be used in compliance with applicable laws and company policies.</li>
+    <li>Employees must only access systems and data that are necessary for their role.</li>
+    <li>Unauthorized access, tampering, or misuse of company information systems is strictly prohibited.</li>
+    <li>Strong password protocols must be followed (minimum length, complexity, and regular updates). Password sharing is not allowed. Multi-factor authentication should be enabled for critical applications.</li>
+    <li>Information systems must not be used for personal gain, illegal activities, or any activity that may be a threat to the company’s interest or harm its reputation.</li>
+    <li>Any confidential data or sensitive information should not be shared in print/hard copy with anyone internally or externally without seeking approval from the Founder and CEO.</li>
+    <li>Avoid keeping any passwords or critical information related to company in hardcopy or mention it in a
+physical form which is easily accessible to others.
+</li>
+  </ul>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">Data Classification and Protection</h2>
+  <p>
+    All information managed by NeoLiv is categorized into the following tiers for protection:
+  </p>
+  <ul>
+    <li>
+      <strong>Confidential Information:</strong> This includes financial data, proprietary project details, investor information, customer information, and personal data of employees and customers.
+    </li>
+    <li>
+      <strong>Internal Use Only:</strong> Data intended for internal operations, such as policies, procedures, and operational reports.
+    </li>
+    <li>
+      <strong>Public Information:</strong> Data that can be freely distributed, such as marketing materials or information released in official public communications.
+    </li>
+  </ul>
+  <p>
+    Confidential and internal information must be secured through encryption, access controls, and other appropriate measures to prevent unauthorized access or disclosure.
+  </p>
+</div>
+<div class="policy-block">
+  <h2 class="policy-title">Information Sharing</h2>
+
+  <h3>Internal Sharing:</h3>
+  <ul>
+    <li>Information should only be shared on a need-to-know basis within the organization.</li>
+    <li>Secure channels (encrypted email, secure file-sharing platforms) must be used for transmitting confidential or sensitive information.</li>
+    <li>Employee(s) must ensure that recipients of information are authorized to access the data.</li>
+  </ul>
+
+  <h3>External Sharing:</h3>
+  <ul>
+    <li>When sharing any confidential or sensitive information with third parties (contractors, vendors, etc), a non-disclosure agreement (NDA) must be in place.</li>
+    <li>If an employee is unsure whether a particular data or information can be shared or not, he/she must check and verify with the Function Head and/or Founder & CEO’s Office before sharing any such information.</li>
+    <li>Information shared with government bodies, regulatory agencies, or courts must follow legal requirements and be handled by authorized personnel.</li>
+    <li>Company data and information should not be shared with any competitor companies or Channel Partners. This must be strictly adhered to.</li>
+  </ul>
+
+  <h2 class="policy-title">Data Security and Privacy</h2>
+  <p>We are committed to protecting the privacy of all stakeholders and securing sensitive data. The following measures must be adhered to:</p>
+  <ul>
+    <li>Personal data of employees, clients, investors or customers must be processed in compliance with the applicable data protection laws (e.g., Personal Data Protection Bill in India).</li>
+    <li>Security protocols as directed by the IT team – such as firewalls, antivirus software, and encryption, must be complied with to protect information systems.</li>
+    <li>Employees must report any suspicious activity or breaches immediately to the IT department.</li>
+  </ul>
+</div>
+<div class="policy-block">
+  <h2 class="policy-title">Data Security and Privacy</h2>
+  <p>We are committed to protecting the privacy of all stakeholders and securing sensitive data. The following measures must be adhered to:</p>
+  <ul>
+    <li>Personal data of employees, clients, investors or customers must be processed in compliance with the applicable data protection laws (e.g., Personal Data Protection Bill in India).</li>
+    <li>Security protocols as directed by the IT team – such as firewalls, antivirus software, and encryption, must be complied with to protect information systems.</li>
+    <li>Employees must report any suspicious activity or breach immediately to the IT department and/or Compliance Officer.</li>
+  </ul>
+
+  <h3>In the event of a data breach, cyberattack, or unauthorized access:</h3>
+  <ul>
+    <li>Employees must report the incident immediately to the IT department.</li>
+    <li>Employees must be very careful when opening email messages – as email-based virus attacks are increasingly common. If anything seems suspicious, they must contact the IT Department immediately.</li>
+    <li>The IT team will investigate the breach, contain it, and initiate corrective actions, such as notifying affected stakeholders if necessary.</li>
+    <li>A formal report will be prepared after the incident, including lessons learned and preventive measures for the future.</li>
+  </ul>
+</div>
+<div class="policy-block mb_0">
+  <h2 class="policy-title">Roles and Responsibilities</h2>
+  <ul>
+    <li>
+      <strong>Employees:</strong> Responsible for using information systems responsibly, securing confidential information, and reporting any suspicious activity. Must ensure that all IT-related policies and procedures are complied with 100% without any compromise.
+    </li>
+    <li>
+      <strong>IT Department:</strong> Responsible for implementing and maintaining data security measures, providing access controls, and handling data breaches.
+    </li>
+    <li>
+      <strong>Senior Management:</strong> Responsible for oversight of information management practices and ensuring compliance with legal and regulatory requirements.
+    </li>
+  </ul>
+</div>
+
+
+  <!-- Add more sections similarly -->
+</div>
+
+
+        </div>
+    </div>
+  </div>
+</section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+</body>
+</html>

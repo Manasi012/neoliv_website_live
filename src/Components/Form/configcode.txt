@@ -1,0 +1,21 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDuYVievqukEizMTJs5nAicwtMQRUeDWJA",
+  authDomain: "neoliv-otp-verification.firebaseapp.com",
+  projectId: "neoliv-otp-verification",
+  storageBucket: "neoliv-otp-verification.firebasestorage.app",
+  messagingSenderId: "778364706430",
+  appId: "1:778364706430:web:185fbce09c58967d29022f",
+  measurementId: "G-4087W3WT7J"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);

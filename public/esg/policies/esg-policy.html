@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neoliv ESG Micro Site</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&family=Source+Serif+Pro:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="https://neoliv.in/favicon.ico" />
+
+    <!-- AOS (Animate On Scroll) -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- START: CSS Overrides to address size issues -->
+    <style>
+      /* General Typography Adjustments */
+      body {
+        font-family: "Poppins", sans-serif; /* Ensuring a consistent base font */
+        font-size: 16px; /* Standard base font size */
+        line-height: 1.6;
+        color: #333; /* A slightly softer black for body text */
+      }
+
+      h1,
+      .h1,
+      h2,
+      .h2,
+      h3,
+      .h3,
+      h4,
+      .h4,
+      h5,
+      .h5,
+      h6,
+      .h6 {
+        font-family: "Poppins", sans-serif; /* Or 'DM Sans' / 'Source Serif Pro' if preferred for headings */
+        font-weight: 600; /* Common weight for headings */
+      }
+
+      /* Hero Section Adjustments */
+      .hero-title {
+        font-size: 2.8rem; /* Reduced from potentially larger size */
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+      .policy-content-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-left: 4px solid #2c7a7b; /* Luxury accent color */
+}
+
+.policy-content-wrapper .policy-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.policy-content-wrapper .policy-title::before {
+  content: "●";
+  position: absolute;
+  left: -1.8rem;
+  color: #2c7a7b;
+  font-size: 1.1rem;
+  top: 0.1rem;
+}
+
+.policy-content-wrapper p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 767.98px) {
+  .policy-content-wrapper {
+    border-left: 3px solid #2c7a7b;
+    padding-left: 1.2rem;
+  }
+  .policy-content-wrapper .policy-title::before {
+    left: -1.4rem;
+  }
+}
+
+
+      .hero-subtitle {
+        font-size: 1.1rem; /* Reduced */
+        font-weight: 400;
+        line-height: 1.7;
+        max-width: 700px; /* Constrain width for readability */
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons .btn-download,
+      .hero-buttons .btn-primary-green {
+        font-size: 0.9rem; /* Reduced button text size */
+        padding: 0.75rem 1.5rem; /* Adjusted padding */
+      }
+      .btn-primary-green {
+        font-weight: 500;
+      }
+
+      /* Vision Section Adjustments */
+      .section_padding {
+        /* Standardize section padding slightly */
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+
+      #vision h2.head {
+        font-size: 2.2rem; /* Reduced */
+        margin-bottom: 1rem; /* Adjusted spacing */
+      }
+      #vision h2.head img {
+        /* Adjust eye icon size if needed */
+        width: 70px;
+        height: auto;
+        vertical-align: middle;
+      }
+
+      #vision .paragraph p.text-muted,
+      #vision .col-md-6 p.text-muted.paragraph {
+        font-size: 1rem; /* Standard paragraph size */
+        line-height: 1.7;
+      }
+      #vision .paragraph p.text-muted:first-of-type {
+        margin-bottom: 0.5rem; /* Tighter spacing between the two intro paragraphs */
+      }
+
+      /* Pillars Section Adjustments */
+      .pillars-section {
+        padding-top: 40px; /* Slightly reduced top padding */
+        padding-bottom: 60px;
+      }
+      .pillars-icon svg {
+        width: 70px; /* Reduced size of the pillar SVG icon */
+        height: auto;
+      }
+
+      .pillars-header .section-title {
+        /* Target H2 within pillars-header */
+        font-size: 2.2rem; /* Reduced */
+        margin-top: 0.5rem; /* Space between icon and title */
+        margin-bottom: 1rem;
+      }
+
+      .pillars-description-gradient {
+        font-size: 1rem; /* Standard paragraph size */
+        line-height: 1.7;
+        max-width: 800px; /* Constrain width */
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .pillars-fullwidth-image {
+        margin-top: 2rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .bg-number-large {
+        font-size: 8rem; /* Significantly reduced background number size */
+        opacity: 0.07; /* Make them more subtle */
+      }
+
+      .pillar-card-final .pillar-title {
+        font-size: 1.3rem; /* Reduced pillar card title size */
+        font-weight: 600;
+        line-height: 1.4;
+      }
+      .pillar-card-final {
+        min-height: 320px; /* Adjust if cards feel too tall/short */
+      }
+
+      /* Promises Section Adjustments */
+      .promises-section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+      .promise-tab span {
+        font-size: 0.95rem; /* Slightly reduced tab text */
+        font-weight: 500;
+      }
+      .promise-tab {
+        padding: 0.8rem 1rem; /* Adjust tab padding */
+      }
+
+      .promises-content .section-title {
+        /* Target H2 within promises-content */
+        font-size: 2.2rem; /* Reduced */
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .promises-description {
+        font-size: 1rem; /* Standard paragraph size */
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.5rem;
+      }
+
+      .promise-tags .promise-tag {
+        font-size: 0.85rem; /* Smaller tags */
+        padding: 0.3rem 0.8rem;
+      }
+
+      .promise-item .promise-icon .icon-placeholder {
+        width: 50px; /* Adjust icon container size */
+        height: 50px;
+      }
+      .promise-item .promise-icon .icon-placeholder i {
+        font-size: 1.5rem; /* Adjust icon size */
+      }
+
+      .promise-item .promise-content h4 {
+        font-size: 1.15rem; /* Reduced promise item title */
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+      }
+
+      .promise-item .promise-content p {
+        font-size: 0.9rem; /* Reduced promise item text */
+        line-height: 1.6;
+      }
+
+      /* Footer Adjustments */
+      .footer-section {
+        padding-top: 50px;
+        padding-bottom: 30px;
+      }
+      .footer-section-title h5 {
+        font-size: 1.1rem; /* Reduced footer titles */
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      .footer-links-list li a.footer-link {
+        font-size: 0.9rem; /* Reduced footer link text */
+      }
+      .social-links .social-link {
+        width: 36px; /* Smaller social icons */
+        height: 36px;
+        font-size: 0.9rem;
+      }
+
+      /* Header Adjustments */
+      .header {
+        padding-top: 0.5rem; /* Reduce header padding if it's too tall */
+        padding-bottom: 0.5rem;
+      }
+      .nav-link {
+        font-size: 0.95rem; /* Adjust nav link font size */
+        font-weight: 500;
+      }
+
+      /* Responsive adjustments for smaller screens */
+      @media (max-width: 991.98px) {
+        .hero-title {
+          font-size: 2.2rem;
+        }
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+        #vision h2.head,
+        .pillars-header .section-title,
+        .promises-content .section-title {
+          font-size: 1.9rem;
+        }
+        .bg-number-large {
+          font-size: 6rem; /* Further reduce on medium screens */
+        }
+      }
+
+      @media (max-width: 767.98px) {
+        body {
+          font-size: 15px; /* Slightly smaller base for small devices */
+        }
+        .hero-title {
+          font-size: 1.8rem;
+        }
+        .hero-subtitle {
+          font-size: 0.95rem;
+        }
+        #vision h2.head,
+        .pillars-header .section-title,
+        .promises-content .section-title {
+          font-size: 1.7rem;
+        }
+        .pillar-card-final .pillar-title {
+          font-size: 1.15rem;
+        }
+        .promise-item .promise-content h4 {
+          font-size: 1.05rem;
+        }
+        .promise-item .promise-content p {
+          font-size: 0.85rem;
+        }
+        .section_padding,
+        .pillars-section,
+        .promises-section {
+          padding-top: 40px;
+          padding-bottom: 40px;
+        }
+        .bg-number-large {
+          display: none; /* Hide large background numbers on small screens if they cause clutter */
+        }
+      }
+     .icon-circle {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+.policy-wrapper {
+  /* max-width: 960px; */
+  margin: 0 auto;
+  padding: 20px;
+  color: #2d2d2d;
+}
+
+.policy-block {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 50px;
+}
+
+.policy-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.policy-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #34c759;
+  margin-top: 10px;
+}
+
+.policy-block p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1rem;
+}
+table thead {
+  background-color: #34c759;
+  color: #ffffff;
+}
+
+table th, table td {
+  text-align: left;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  vertical-align: top;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+
+.policy-block ul {
+  margin-bottom: 0;
+  padding-left: 1.25rem;
+  line-height: 1.7;
+}
+.policy-block ul li{
+    padding-bottom: 0.8rem;
+}
+.section_padding{
+    padding-bottom: 0 !important;
+}
+
+
+@media (max-width: 767.98px) {
+  .policy-wrapper {
+    padding: 40px 15px;
+  }
+
+  .policy-title {
+    font-size: 1.5rem;
+  }
+
+  .policy-title::after {
+    width: 40px;
+  }
+
+  .policy-block p {
+    font-size: 1rem;
+  }
+}
+
+
+    </style>
+    <!-- END: CSS Overrides -->
+  </head>
+<body>
+   <section class="section_padding bg-light">
+  <div class="container">
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-8 text-center">
+        <h2 class="section-title">ESG Policy</h2>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+          <div class="policy-wrapper">
+
+<div class="policy-block">
+  <h2 class="policy-title">Introduction</h2>
+  <p>
+   Environmental, Social, and Governance considerations are essential in an age of eminent climate change risks and threats. NeoLiv Group (NeoLiv) caters to the real estate and housing residential segment that is directly affected by increasing climate risks.
+  </p>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">Purpose Statement</h2>
+  <p>
+ The purpose of the policy is to guide all the stakeholders of NeoLiv such that the highest standards of environmental and social considerations, and ethical practices are integrated in decision-making and policy implementation.    </p>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">Applicability</h2>
+  <p>
+    This Policy has been approved and adopted by the Board of Directors and is applicable to the Manager and NeoLiv Group.
+  </p>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">Scope of the Policy</h2>
+  <p>
+    This policy applies to all employees of NeoLiv, across all operations and locations of the company. Vendors, contractors, sub-contractors, value chain partners, and any third party associated with the company at any point in time must adhere to this policy.
+  </p>
+</div>
+<div class="policy-block">
+  <h2 class="policy-title">Definitions</h2>
+
+  <p><strong>“Applicable Law”</strong> means any statute, law, regulation, ordinance, rule, judgement, order, decree, bye-law, approval of any Governmental Agency, directive, guideline, policy, requirement or other government restriction or any similar form of decision of or determination by, or any interpretation having the force of law of any of the foregoing Governmental Agency having jurisdiction, applicable to any Party, in force from time to time.</p>
+
+  <p><strong>“Act”</strong> means the Companies Act, 2013 as amended from time to time.</p>
+
+  <p><strong>“Board of Directors”</strong> shall mean the Board of Directors of the Company.</p>
+
+  <p><strong>“NeoLiv Group / NeoLiv”</strong> The NeoLiv Group shall collectively mean all the entities associated with NeoLiv Capital Advisory, including NeoLiv Real Estate, Inliv Real Estate Fund, all the asset SPVs, including SPVs that shall form part of NCA in future.</p>
+   <p><strong>“SEBI”</strong> shall mean Securities and Exchange Board of India.</p>
+
+  <p><strong>“Stakeholder/s”</strong> shall mean individuals or groups of individuals who have interests or the ability to influence outcomes of business activities across operations, supply chains, and business partnerships, as well as those who are directly or indirectly impacted or affected by the business activities of the Entity.</p>
+
+  <p><strong>“Supplier/s and Vendor/s”</strong> shall mean suppliers, service providers, vendors, traders, agents, contractors, subcontractors engaged for the purpose of development and maintenance of the assets in the portfolio of the NeoLiv Group.</p>
+
+</div>
+<div class="policy-block">
+  <h2 class="policy-title">Applicability</h2>
+  <p>
+    This Policy has been approved and adopted by the Board of Directors and is applicable to the Manager and NeoLiv Group.
+  </p>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">Alignment</h2>
+  <p>
+    This policy document aligns with international standards such as the UNGC Principles on Human Rights and national standards including the applicable directives issued by SEBI. It is consistent with NeoLiv’s Code of Conduct and other policies relevant to both internal and external stakeholders.
+  </p>
+</div>
+<div class="policy-block">
+  <h2 class="policy-title">Roles and Responsibilities</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered align-middle">
+      <thead class="table-light">
+        <tr>
+          <th><strong>Role</strong></th>
+          <th><strong>Responsibility</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color: #6a1b9a; font-weight: 600;">
+            ESG Committee<br><small>(Board Level)</small>
+          </td>
+          <td>
+            <ul>
+              <li>Accountable for formulating policies.</li>
+              <li>Responsible for overseeing ESG strategy integration and reviewing ESG performance.</li>
+              <li>Provide guidance on ESG metrics and inputs.</li>
+              <li>Ensure transparency and align ESG principles with organizational objectives.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: #6a1b9a; font-weight: 600;">
+            ESG Management Committee<br><small>(Management)</small>
+          </td>
+          <td>
+            <ul>
+              <li>Implements ESG strategy into operations.</li>
+              <li>Monitors risks, ensures compliance, and increases accountability across all business functions.</li>
+              <li>Enhances disclosures through stakeholder engagement.</li>
+              <li>Drives sustainability initiatives and aligns ESG disclosures with global frameworks.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: #6a1b9a; font-weight: 600;">
+            ESG Taskforce<br><small>(Function Level)</small>
+          </td>
+          <td>
+            <ul>
+              <li>The ESG Taskforce leads on-ground execution and implementation of ESG strategy.</li>
+              <li>Ensures seamless integration of sustainability practices into daily operations.</li>
+              <li>Monitors progress and addresses challenges.</li>
+              <li>Drives the practical application of ESG initiatives across the organization.</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="policy-block">
+  <h2 class="policy-title">Policy Commitment</h2>
+
+  <h5><strong>1. Environmental Protection</strong></h5>
+  <p>
+    NeoLiv understands the impact of Climate change and is committed to aligning with applicable national and international commitments by minimizing its carbon footprint. All aspects of environmental sustainability are material to the company, emphasizing Waste Management and Circular Economy, Energy Management, GHG Emissions, and Climate Change Action, in line with industry and/or sectorial standards.
+  </p>
+
+  <h6><strong>Waste Management and Circular Economy</strong></h6>
+  <p>The company is committed to following all waste management regulations and mandates as per regional and national standards across all locations and levels of operation. </p>
+  <ul style="padding-left: 1.5rem; line-height: 1.8; color: #555;">
+    <li>The company will make its best efforts to reduce waste generation at and through the entire value chain.</li>
+    <li>Ensure compliance with all waste-management laws, as applicable.</li>
+    <li>Incorporate the principles of circular economy in everyday operations, understanding building emissions, undertake life cycle analyses wherever applicable. </li>
+  </ul>
+
+  <h6><strong>Water Stewardship</strong></h6>
+  <p>The Company is committed to enhancing water efficiency and implementing effective conservation strategies in the planning of new projects. To accomplish this, the Company will:</p>
+  <ul style="padding-left: 1.5rem; line-height: 1.8; color: #555;">
+    <li>Preserve water resources by utilizing them efficiently and adopting responsible management practices.</li>
+    <li>Investigate opportunities for water reuse and alternative water sources to mitigate adverse effects on the broader community.</li>
+    <li>Maintain transparency in activities that may directly or indirectly affect public policy, legislation, or regulations related to water.</li>
+  </ul>
+
+  <h6 class="mt-4"><strong>Energy and GHG Emission Management</strong></h6>
+  <p>NeoLiv is cognizant of the impact GHG emissions and non-renewable energy can have on the environment, for the same, the company commits to be mindful of its operations and be more efficient and environmentally sustainable.</p>
+  <ul style="padding-left: 1.5rem; line-height: 1.8; color: #555;">
+    <li>Ensure efficient energy use in all operations and incorporate renewable energy resources across locations.</li>
+    <li>Make processes more efficient and less energy intensive.</li>
+    <li>Measure GHG emissions, account for the entire carbon footprint, and adopt measures to minimize it.</li>
+  </ul>
+
+  <h6 class="mt-4"><strong>• Climate Change Action</strong></h6>
+  <ul style="padding-left: 1.5rem; line-height: 1.8; color: #555;">
+    <li>
+      The company understands the threat that climate risks, both physical and transition, pose to humanity, and financial as well as non-financial systems. It commits to act towards climate change and mitigation as is possible within the scope of the organization.
+    </li>
+    <li>
+     To strive to prevent pollution and implement appropriate methods for monitoring environmental protection measures.
+    </li>
+  </ul>
+
+  <!-- START: Social Wellbeing Section -->
+  <h5 class="mt-4"><strong>2. Social Wellbeing</strong></h5>
+  <p>
+NeoLiv’s operations and business activities impact multiple stakeholders, directly as well as indirectly. This policy reinforces the NeoLiv's commitment towards being responsible corporate by fostering positive influence and meaningful improvement for all its stakeholders (internal and external), in compliance with the Human Rights Policy and HR Manual, emphasizing on:
+  </p>
+
+  <h6><strong>Employee Training and Development</strong></h6>
+  <p>All employees and staff members are key to all operations undertaken in the company. The staff’s capability, knowledge, and skills directly contribute to the company’s efficiency and quality. It commits to:</p>
+  <ul style="padding-left: 1.5rem; line-height: 1.8; color: #555;">
+    <li>
+      Constantly update and arrange for training for all staff members and employees on any new technologies, techniques, equipment usage, etc., relevant to their duties
+    </li>
+    <li>
+      Train all employees on issues of environment, health and safety, and emergency medical procedure
+    </li>
+    <li>
+       Have regular employee engagement sessions in accordance with Human Resources for better coordination and a working system for all employees 
+    </li>
+    <li>Engage with employees through online as well as offline feedback sessions</li>
+  </ul>
+</div>
+
+<div class="policy-block">
+  <h6><strong>Customer Relationship Management</strong></h6>
+  <p>
+   Customers and their required services as well as their experience with NeoLiv are fundamental to the company’s performance. Managing customer relationships is, hence, key to the company and it commits to:
+  </p>
+  <ul style="padding-left: 1.5rem; line-height: 1.8; color: #555;">
+    <li>Monitor client needs, queries, and complaints through multiple platforms including, but not limited to, surveys, questionnaires, toll-free number, etc. regularly and establish procedures to resolve the same. </li>
+    <li>Design creative and innovative ways to better address customer requirements.</li>
+    <li>Attend to queries and focus on long-term relationship building with the customer.</li>
+    <li>Automate the feedback mechanism by deploying a management information system for CRM.</li>
+    <li>Keep open and transparent grievance redressal and communication mechanisms.</li>
+  </ul>
+
+  <h6 class="mt-4"><strong>Responsible Supply Chain</strong></h6>
+  <p>
+  A responsible supply chain is the backbone of operational efficiency throughout the organization and essential to sustainability integration in the organization. The company commits to:
+  </p>
+  <ul style="padding-left: 1.5rem; line-height: 1.8; color: #555;">
+    <li>Promoting environmentally sustainable operations through its supply chain.</li>
+    <li>Promote social well-being with respect to healthy working conditions, in line with all national regulations and laws.</li>
+    <li>Incorporate ESG-related parameters and screening criteria as part of the Supplier Selection process. </li>
+    <li>Conduct regular training and awareness sessions for vendors and suppliers on ESG-related requirements.</li>
+    <li>Develop a methodology for ESG Due Diligence and conduct third-party audits of suppliers.</li>
+  </ul>
+</div>
+<div class="policy-block">
+  <h6 class="mt-4"><strong>Employee Wellbeing</strong></h6>
+  <p>
+   Employees are key to any company’s performance and success and hence focussing as well investing in employee wellbeing should be a fundamental agenda for a company. NeoLiv Commits to:
+  </p>
+  <ul style="padding-left: 1.5rem; line-height: 1.8; color: #555;">
+    <li>Uphold all values of inclusion, diversity, and equity in the workplace.</li>
+    <li>Take into consideration all complaints or grievances of the employee fairly and impartially.</li>
+    <li>Provide employees with flexible and hybrid working hours for better work-life balance.</li>
+    <li>Provide paid maternal and parental leave as per national norms and regulations</li>
+    <li>Keep an open and anonymous feedback channel and streamlined addressal of the same with consideration to time.</li>
+    <li>Provide multiple avenues to employees for sharing their feedback across levels, from executive to c-suite .</li>
+    <li>Balance a diverse team in terms of age, gender, experience and monitor gender pay parity across levels.</li>
+    <li>Develop a procedure to identify the requirements of the different employee engagement and skill development programs, plan and conduct training and development programs for enhancing employees’ skills and professional growth.</li>
+    <li>Engage with employees regularly through multiple channels.</li>
+    <li>Provide employees with programs, and policies that extend health and well-being beyond occupation-related concerns.</li>
+    <li>Work towards better employee satisfaction with a focus and specified action plans on the gaps identified through engagement activities.</li>
+    <li>Conduct periodic internal as well as external employee satisfaction surveys.</li>
+    <li>Also, comply with applicable laws, regulations, and industry standards related to employee remuneration, and other statutory benefits.</li>
+
+  </ul>
+</div>
+<div class="policy-block">
+  <h6 class="mt-4"><strong>Community Development</strong></h6>
+  <p>
+    As we grow and move ahead, NeoLiv is committed to supporting the communities that are directly or indirectly impacted by our business. We will strive to empower our communities through the following:
+  </p>
+  <ul style="padding-left: 1.5rem; line-height: 1.8; color: #555;">
+   <li>Identifying and undertaking relevant endeavours leading to improve the standard of living and overall well-being, creation of a positive and lasting impact on communities</li>
+   <li>protect people and the environment surrounding our projects</li>
+   <li>support local job creation and income opportunities</li>
+   <li>work with stakeholders to reduce any negative effects of business activities on the neighbourhood and the environment.</li>
+  </ul>
+   <p>
+    Communities that are impacted by any direct or indirect activities of the business form a core stakeholder for the organization. Their development and progress can also be a measure of impact creation for the organization. 
+  </p>
+  <p>Wherever applicable, NeoLiv endeavours to ensure:</p>
+  <ul style="padding-left: 1.5rem; line-height: 1.8; color: #555;">
+   <li>Creation of a positive impact on the surrounding community</li>
+   <li>Protection of people and the planet throughout the lifecycle of projects</li>
+   <li>Contribute to local job creation and income generation for the community members</li>
+   <li>Contribute to local job creation and income generation for the community members
+To raise the standard of living and quality of life of the surrounding communities.</li>
+<li>Reduce the adverse impacts of business activities (if any) on the neighbourhood and the environment by working with the relevant stakeholders.  </li>
+  </ul>
+</div>
+<div class="policy-block">
+  <h6 class="mt-4"><strong>Human Rights</strong></h6>
+  <p>
+    NeoLiv is committed to respecting human rights in line with national, and international frameworks and the company’s core values. The ethos of the company is fundamental in its commitment to Human Rights and NeoLiv shall:
+  </p>
+  <ul style="padding-left: 1.5rem; line-height: 1.8; color: #555;">
+    
+    <li>Not employ children at all workplaces and adherence to statutory minimum working age requirements</li>
+    <li>Have no form of forced labor</li>
+     <li>Comply with all applicable laws and respect internationally recognized human rights, working conditions and labor laws.</li>
+    <li>o	Establish procedures for human rights assessment</li>
+     <li>Extend ethical practices and fair human rights conditions to aligned contractual parties</li>
+    <li>Take bold action against any hostile, intimidating, or offensive behaviour, including but not limited to discrimination, harassment, and retribution</li>
+  </ul>
+
+  <h6 class="mt-4"><strong>Health and Safety</strong></h6>
+  <p>
+    Employees are the key resource of a company, their health and safety, as well as physical, mental, and emotional well-being are very important. In light of protecting the well-being of the employee, through multiple risks to the operations of the industry, the company commits to:
+  </p>
+  <ul style="padding-left: 1.5rem; line-height: 1.8; color: #555;">
+   <li>Conduct awareness programs and trainings on Occupational Health and Safety</li>
+<li>Engage in simulations or surprise emergency trials related to EHS</li>
+<li>Create a first-aid program and training mandatory for all employees</li>
+<li>Provide a safe, healthy, clean, and ergonomic working environment</li>
+<li>Conduct activities for employee engagement regularly</li>
+<li>Formulate and implement policies around E/OHS after identifying relevant risks for the operations of the company and at different levels of working</li>
+<li>Ensure Zero harm across our operations</li>
+
+  </ul>
+</div>
+
+<div class="policy-block">
+  <h5 class="mt-5"><strong>3. Governance</strong></h5>
+  <p>
+    The company recognizes the importance of corporate governance to achieve its goal of being sustainable and has set guidelines for the right practices, risk management, and ethical conduct with key emphasis on the following:
+  </p>
+
+  <h6 class="mt-4"><strong>Governance and Accountability</strong></h6>
+  <p>
+   Accountability is key for improvement, which forms a core part of governance as well. By being responsible and accountable, the company commits to:
+  </p>
+  <ul style="padding-left: 1.5rem; line-height: 1.8; color: #555;">
+    <li>Establish an ESG governance framework with oversight under the Board of Directors and Leadership. </li>
+    <li>Have a robust data management system for tracking goals and performance on ESG parameters. </li>
+  </ul>
+
+  <h6 class="mt-4"><strong>Regulatory Compliance</strong></h6>
+  <p>
+    NeoLiv ensures strict alignment and compliance with all national legislation, guidelines as well as regulations. It commits to strict Board Oversight over all levels of legal matters and regulation, in this regard NeoLiv endeavours to:
+  </p>
+  <ul style="padding-left: 1.5rem; line-height: 1.8; color: #555;">
+  <li>Set up a team to update and help different departments comply with the legal requirements and timely submission under different statutes.</li>
+<li>Take legal advice only from an external legal advisor or lawyer whenever required</li>
+<li>Take into account all documents and proofs of compliance as per the legal requirements.</li>
+<li>Set up a compliance management system and update the status of compliance on a regular basis.</li>
+
+  </ul>
+</div>
+
+
+<div class="policy-block">
+  <h6 class="mt-4"><strong>Risk Management</strong></h6>
+  <p>
+    Risk management forms a core area for the organization, especially systematic risks in case of any collapse or compromise of technological and/or informational systems. NeoLiv commits to:
+  </p>
+  <ul style="padding-left: 1.5rem; line-height: 1.8; color: #555;">
+    <li>Ensuring that risks and opportunities related to the company’s operations are regularly discussed with the board members.</li>
+<li>Integrate the ESG risk and Opportunities in the ERM framework.</li>
+<li>A mitigation plan for the risks is devised while keeping the operations in consideration</li>
+<li>The risks and opportunities are updated, and the mitigation plan is reviewed and revised with respect to the best practices and solutions available in the market.</li>
+
+  </ul>
+
+  <h6 class="mt-4"><strong>Information Protection</strong></h6>
+  <p>
+    NeoLiv is dedicated to upholding the highest standards in customer privacy protection. Committing to the same, NeoLiv will:
+  </p>
+  <ul style="padding-left: 1.5rem; line-height: 1.8; color: #555;">
+   <li>Ensures to establish clear data handling guidelines, implement robust security measures, and prevent unauthorized access or disclosure.</li>
+<li>Define data retention periods, ensure secure data disposal, identify, and manage cybersecurity threats, and use encryption, firewalls, intrusion detection systems, and access controls.</li>
+<li>Complying with data privacy laws, supporting employees and stakeholders, and regularly updating policies to address new risks and legal requirements are also part of the company’s commitment.</li>
+
+  </ul>
+</div>
+<div class="policy-block">
+  <h6 class="mt-4"><strong>Anti-Bribery and Anti-Corruption</strong></h6>
+  <p>
+    Through its anti-bribery and anti-corruption policy, NeoLiv wants to demonstrate its steadfast commitment to preventing bribery and corruption while promoting a culture of transparency, accountability, and compliance. To this end, NeoLiv shall: 
+  </p>
+  <ul style="padding-left: 1.5rem; line-height: 1.8; color: #555;">
+   <li>Comply with all applicable laws and regulations related to anti-bribery and anti-corruption.</li>
+<li>Provide training and spread awareness among the employees on a regular interval.</li>
+<li>Commit to prevent, deter, and detect bribery and other corrupt behaviours and be governed by the Code of Conduct on severe consequences of violations.</li>
+
+  </ul>
+
+  <h6 class="mt-4"><strong>Competitive Behaviour</strong></h6>
+  <p>
+   The concept of fair trade and competition is core to NeoLiv. To this end, NeoLiv shall:
+  </p>
+  <ul style="padding-left: 1.5rem; line-height: 1.8; color: #555;">
+    <li>Ensure most favourable terms possible for all the parties involved with regards to customer engagements.</li>
+    <li>Act independently of any competitor while being creative, innovative, and efficient in its service delivery.</li>
+  </ul>
+</div>
+<div class="policy-block mb_0">
+  <h5 class="mt-5 policy-title"><strong>Monitoring and Reporting</strong></h5>
+  <p>
+    The members of the ESG committee will be responsible for reviewing the performance in relation to the ESG activities and targets. The board will receive updates on the same periodically.
+  </p>
+
+  <h5 class="mt-5 policy-title"><strong>Changes to this Policy</strong></h5>
+  <p>
+    The policy may be updated in accordance with the company's ESG strategy as and when required,
+and any necessary updates will be properly announced on our website or through other suitable
+channels.
+  </p>
+
+  <h5 class="mt-5 policy-title"><strong>Contact</strong></h5>
+  <p>
+    Any questions or queries related to this policy should be addressed to the XXX committee team at
+<a href="mailto:'Neoliv.ESGCommittee@neoliv.in">Neoliv.ESGCommittee@neoliv.in</a> </a>
+  </p>
+</div>
+
+
+
+  <!-- Add more sections similarly -->
+</div>
+
+
+        </div>
+    </div>
+  </div>
+</section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+</body>
+</html>

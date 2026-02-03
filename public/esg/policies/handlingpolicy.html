@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neoliv ESG Micro Site</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&family=Source+Serif+Pro:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="https://neoliv.in/favicon.ico" />
+
+    <!-- AOS (Animate On Scroll) -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- START: CSS Overrides to address size issues -->
+    <style>
+      /* General Typography Adjustments */
+      body {
+        font-family: "Poppins", sans-serif; /* Ensuring a consistent base font */
+        font-size: 16px; /* Standard base font size */
+        line-height: 1.6;
+        color: #333; /* A slightly softer black for body text */
+      }
+
+      h1,
+      .h1,
+      h2,
+      .h2,
+      h3,
+      .h3,
+      h4,
+      .h4,
+      h5,
+      .h5,
+      h6,
+      .h6 {
+        font-family: "Poppins", sans-serif; /* Or 'DM Sans' / 'Source Serif Pro' if preferred for headings */
+        font-weight: 600; /* Common weight for headings */
+      }
+
+      /* Hero Section Adjustments */
+      .hero-title {
+        font-size: 2.8rem; /* Reduced from potentially larger size */
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+      .policy-content-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-left: 4px solid #2c7a7b; /* Luxury accent color */
+}
+
+.policy-content-wrapper .policy-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.policy-content-wrapper .policy-title::before {
+  content: "●";
+  position: absolute;
+  left: -1.8rem;
+  color: #2c7a7b;
+  font-size: 1.1rem;
+  top: 0.1rem;
+}
+
+.policy-content-wrapper p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 767.98px) {
+  .policy-content-wrapper {
+    border-left: 3px solid #2c7a7b;
+    padding-left: 1.2rem;
+  }
+  .policy-content-wrapper .policy-title::before {
+    left: -1.4rem;
+  }
+}
+
+
+      .hero-subtitle {
+        font-size: 1.1rem; /* Reduced */
+        font-weight: 400;
+        line-height: 1.7;
+        max-width: 700px; /* Constrain width for readability */
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons .btn-download,
+      .hero-buttons .btn-primary-green {
+        font-size: 0.9rem; /* Reduced button text size */
+        padding: 0.75rem 1.5rem; /* Adjusted padding */
+      }
+      .btn-primary-green {
+        font-weight: 500;
+      }
+
+      /* Vision Section Adjustments */
+      .section_padding {
+        /* Standardize section padding slightly */
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+
+      #vision h2.head {
+        font-size: 2.2rem; /* Reduced */
+        margin-bottom: 1rem; /* Adjusted spacing */
+      }
+      #vision h2.head img {
+        /* Adjust eye icon size if needed */
+        width: 70px;
+        height: auto;
+        vertical-align: middle;
+      }
+
+      #vision .paragraph p.text-muted,
+      #vision .col-md-6 p.text-muted.paragraph {
+        font-size: 1rem; /* Standard paragraph size */
+        line-height: 1.7;
+      }
+      #vision .paragraph p.text-muted:first-of-type {
+        margin-bottom: 0.5rem; /* Tighter spacing between the two intro paragraphs */
+      }
+
+      /* Pillars Section Adjustments */
+      .pillars-section {
+        padding-top: 40px; /* Slightly reduced top padding */
+        padding-bottom: 60px;
+      }
+      .pillars-icon svg {
+        width: 70px; /* Reduced size of the pillar SVG icon */
+        height: auto;
+      }
+
+      .pillars-header .section-title {
+        /* Target H2 within pillars-header */
+        font-size: 2.2rem; /* Reduced */
+        margin-top: 0.5rem; /* Space between icon and title */
+        margin-bottom: 1rem;
+      }
+
+      .pillars-description-gradient {
+        font-size: 1rem; /* Standard paragraph size */
+        line-height: 1.7;
+        max-width: 800px; /* Constrain width */
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .pillars-fullwidth-image {
+        margin-top: 2rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .bg-number-large {
+        font-size: 8rem; /* Significantly reduced background number size */
+        opacity: 0.07; /* Make them more subtle */
+      }
+
+      .pillar-card-final .pillar-title {
+        font-size: 1.3rem; /* Reduced pillar card title size */
+        font-weight: 600;
+        line-height: 1.4;
+      }
+      .pillar-card-final {
+        min-height: 320px; /* Adjust if cards feel too tall/short */
+      }
+
+      /* Promises Section Adjustments */
+      .promises-section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+      .promise-tab span {
+        font-size: 0.95rem; /* Slightly reduced tab text */
+        font-weight: 500;
+      }
+      .promise-tab {
+        padding: 0.8rem 1rem; /* Adjust tab padding */
+      }
+
+      .promises-content .section-title {
+        /* Target H2 within promises-content */
+        font-size: 2.2rem; /* Reduced */
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .promises-description {
+        font-size: 1rem; /* Standard paragraph size */
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.5rem;
+      }
+
+      .promise-tags .promise-tag {
+        font-size: 0.85rem; /* Smaller tags */
+        padding: 0.3rem 0.8rem;
+      }
+
+      .promise-item .promise-icon .icon-placeholder {
+        width: 50px; /* Adjust icon container size */
+        height: 50px;
+      }
+      .promise-item .promise-icon .icon-placeholder i {
+        font-size: 1.5rem; /* Adjust icon size */
+      }
+
+      .promise-item .promise-content h4 {
+        font-size: 1.15rem; /* Reduced promise item title */
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+      }
+
+      .promise-item .promise-content p {
+        font-size: 0.9rem; /* Reduced promise item text */
+        line-height: 1.6;
+      }
+
+      /* Footer Adjustments */
+      .footer-section {
+        padding-top: 50px;
+        padding-bottom: 30px;
+      }
+      .footer-section-title h5 {
+        font-size: 1.1rem; /* Reduced footer titles */
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      .footer-links-list li a.footer-link {
+        font-size: 0.9rem; /* Reduced footer link text */
+      }
+      .social-links .social-link {
+        width: 36px; /* Smaller social icons */
+        height: 36px;
+        font-size: 0.9rem;
+      }
+
+      /* Header Adjustments */
+      .header {
+        padding-top: 0.5rem; /* Reduce header padding if it's too tall */
+        padding-bottom: 0.5rem;
+      }
+      .nav-link {
+        font-size: 0.95rem; /* Adjust nav link font size */
+        font-weight: 500;
+      }
+
+      /* Responsive adjustments for smaller screens */
+      @media (max-width: 991.98px) {
+        .hero-title {
+          font-size: 2.2rem;
+        }
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+        #vision h2.head,
+        .pillars-header .section-title,
+        .promises-content .section-title {
+          font-size: 1.9rem;
+        }
+        .bg-number-large {
+          font-size: 6rem; /* Further reduce on medium screens */
+        }
+      }
+
+      @media (max-width: 767.98px) {
+        .hero-title {
+          font-size: 1.8rem;
+        }
+        .hero-subtitle {
+          font-size: 0.95rem;
+        }
+        #vision h2.head,
+        .pillars-header .section-title,
+        .promises-content .section-title {
+          font-size: 1.7rem;
+        }
+        .pillar-card-final .pillar-title {
+          font-size: 1.15rem;
+        }
+        .promise-item .promise-content h4 {
+          font-size: 1.05rem;
+        }
+        .promise-item .promise-content p {
+          font-size: 0.85rem;
+        }
+        .section_padding,
+        .pillars-section,
+        .promises-section {
+          padding-top: 40px;
+          padding-bottom: 40px;
+        }
+        .bg-number-large {
+          display: none; /* Hide large background numbers on small screens if they cause clutter */
+        }
+      }
+     .icon-circle {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+.policy-wrapper {
+  /* max-width: 960px; */
+  margin: 0 auto;
+  padding: 20px;
+  color: #2d2d2d;
+}
+
+.policy-block {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 50px;
+}
+
+.policy-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.policy-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #34c759;
+  margin-top: 10px;
+}
+
+.policy-block p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1rem;
+}
+.policy-block table td,
+.policy-block table th {
+  vertical-align: top;
+  font-size: 0.95rem;
+}
+
+.policy-block ul {
+  margin-bottom: 0;
+  padding-left: 1.25rem;
+  line-height: 1.7;
+}
+table thead {
+  background-color: #34c759;
+  color: #ffffff;
+}
+
+table th, table td {
+  text-align: left;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  vertical-align: top;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.policy-block ul {
+  margin-bottom: 0;
+  padding-left: 1.25rem;
+  line-height: 1.7;
+}
+.policy-block ul li{
+    padding-bottom: 0.8rem;
+}
+.policy-block ol li{
+    padding-bottom: 0.8rem;
+}
+.section_padding{
+    padding-bottom: 0 !important;
+}
+
+
+@media (max-width: 768px) {
+  .policy-wrapper {
+    padding: 40px 15px;
+  }
+
+  .policy-title {
+    font-size: 1.2rem;
+  }
+
+  .policy-title::after {
+    width: 40px;
+  }
+ .mb_0{
+    margin-bottom: 0;
+ }
+
+  .policy-block p {
+    font-size: 1rem;
+  }
+}
+
+
+    </style>
+    <!-- END: CSS Overrides -->
+  </head>
+<body>
+   <section class="section_padding bg-light">
+  <div class="container">
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-8 text-center">
+        <h2 class="section-title">Grievance Handling Policy</h2>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+          <div class="policy-wrapper">
+<div class="policy-block">
+  <h2 class="policy-title">Objective</h2>
+  <p>
+    This policy aims to provide employees with a transparent, fair and systematic process for addressing and resolving grievances. It is to ensure that the grievances are promptly and effectively handled for promoting a positive work environment.
+  </p>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">Applicability</h2>
+  <p>
+    This Policy has been approved and adopted by the Board of Directors and is applicable to the Manager and NeoLiv Group.
+  </p>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">Definition</h2>
+  <p>
+    The NeoLiv Group shall collectively mean all the entities associated with NeoLiv Capital Advisory, including NeoLiv Real Estate, Inliv Real Estate Fund, all the asset SPVs, including SPVs that shall form part of NCA in future.
+  </p>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">Scope</h2>
+  <p>
+    This policy applies to all employees, those on third-party rolls, and contractual resources.
+  </p>
+</div>
+<div class="policy-block">
+  <h2 class="policy-title">Roles and Responsibilities</h2>
+  <table class="policy-table">
+    <thead>
+      <tr>
+        <th>Role</th>
+        <th>Responsibility</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Management</td>
+        <td>
+          <ul>
+            <li>Accountable for ensuring implementation of the policy with adoption of grievance mechanisms.</li>
+            <li>Establishing open communication channels for the stakeholders.</li>
+            <li>Developing resolutions and actions to rectify any issues.</li>
+            <li>Follow up and track progress of grievance redressal.</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Respective Point of Contact for Each Stakeholder Group</td>
+        <td>
+          <ul>
+            <li>Ensures the grievance mechanism procedure is being adhered to correctly.</li>
+            <li>Maintains grievance register and monitors correspondence.</li>
+            <li>Monitors grievances/trends over time and reports findings to the Management.</li>
+            <li>Accountable for department-specific grievances and escalates to management for resolution.</li>
+            <li>Supports final grievance redressal and closure.</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">Definition of Grievance</h2>
+  <p>
+    A grievance is any concern, dissatisfaction or feeling of injustice related to work conditions, managerial actions, or interactions with colleagues. It may include, but is not limited to:
+  </p>
+  <ul>
+    <li>Working conditions</li>
+    <li>Discrimination or harassment</li>
+    <li>Unfair treatment by manager or colleagues</li>
+    <li>Health and safety concerns</li>
+  </ul>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">What Does Not Constitute a Grievance?</h2>
+  <p>The following issues will not be considered grievances under this policy unless supported by new evidence:</p>
+  <ul>
+    <li>Disagreements or dissatisfaction with performance evaluations, appraisals, promotions, or ratings, unless there's evidence of bias or violation of policies.</li>
+    <li>Dissatisfaction with company policies, unless unfairly implemented.</li>
+    <li>Personal issues between employees unless they escalate into workplace conflict or harassment.</li>
+    <li>Previously reviewed and resolved grievances without new evidence.</li>
+    <li>Issues governed by government laws, regulations, or court orders.</li>
+    <li>Matters related to Sexual Harassment, which shall be addressed under the POSH Policy.</li>
+  </ul>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">Guiding Principles</h2>
+  <ul>
+    <li><strong>Confidentiality:</strong> Grievances will be handled confidentially to protect the identity and privacy of individuals involved.</li>
+    <li><strong>Accountability:</strong> Departments are responsible for grievances under their scope and must escalate appropriately.</li>
+    <li><strong>Resolution Support:</strong> Designated contacts will facilitate resolution and ensure closure in coordination with Management.</li>
+  </ul>
+</div>
+<div class="policy-block">
+  <h2 class="policy-title">Steps for Raising a Grievance</h2>
+  <ol>
+    <li>
+      If an individual has a grievance, it should first be raised informally with the Reporting Manager.
+      Most grievances can be addressed through direct, transparent dialogue. The Reporting Manager must resolve it within <strong>5 working days</strong>.
+    </li>
+    <li>
+      If the Reporting Manager is unable to resolve the grievance, they may escalate the issue to the <strong>Functional Head</strong>.
+    </li>
+    <li>
+      If not resolved informally, the individual may escalate the grievance to the Functional Head verbally or in writing (via email).
+      In this case, the <strong>Functional Head</strong> must address the grievance within <strong>7 working days</strong>. The Reporting Manager must be looped in.
+    </li>
+    <li>
+      The Functional Head may consult the <strong>Head of HR</strong>, formally or informally, to help resolve the grievance amicably.
+      The Head of HR must respond within <strong>5 working days</strong>.
+    </li>
+    <li>
+      The <strong>HR Head</strong> must also inform the <strong>Regional CEO</strong> and/or <strong>Founder & CEO</strong> about the action taken or solution provided.
+    </li>
+    <li>
+      If the grievance is with the Functional Head, the employee may approach the <strong>Head of HR</strong> directly with full details.
+      The Head of HR may involve the <strong>Regional CEO</strong> and/or <strong>Founder & CEO</strong> and resolve the matter within <strong>7 working days</strong>.
+    </li>
+    <li>
+      If the <strong>HR Head</strong> is unable to resolve the issue, they may escalate it to the <strong>Regional CEO</strong> and/or <strong>Founder & CEO</strong> to bring an amicable solution.
+    </li>
+    <li>
+      Any grievance involving <strong>discrimination or harassment</strong> by a colleague or senior must be raised <strong>only with the HR Head</strong> and will be handled in complete confidentiality.
+    </li>
+    <li>
+      If the grievance involves the <strong>Head of HR</strong>, the employee can raise the matter directly with the <strong>Founder & CEO’s Office</strong>.
+    </li>
+  </ol>
+</div>
+<div class="policy-block mb_0">
+  <h2 class="policy-title">Review and Amendment</h2>
+  <p>
+    This policy will be reviewed annually and amended as necessary to ensure it remains relevant and effective.
+  </p>
+</div>
+
+  <!-- Add more sections similarly -->
+</div>
+
+
+        </div>
+    </div>
+  </div>
+</section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+</body>
+</html>

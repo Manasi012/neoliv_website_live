@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neoliv ESG Micro Site</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&family=Source+Serif+Pro:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="https://neoliv.in/favicon.ico" />
+
+    <!-- AOS (Animate On Scroll) -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- START: CSS Overrides to address size issues -->
+    <style>
+      /* General Typography Adjustments */
+      body {
+        font-family: "Poppins", sans-serif; /* Ensuring a consistent base font */
+        font-size: 16px; /* Standard base font size */
+        line-height: 1.6;
+        color: #333; /* A slightly softer black for body text */
+      }
+
+      h1,
+      .h1,
+      h2,
+      .h2,
+      h3,
+      .h3,
+      h4,
+      .h4,
+      h5,
+      .h5,
+      h6,
+      .h6 {
+        font-family: "Poppins", sans-serif; /* Or 'DM Sans' / 'Source Serif Pro' if preferred for headings */
+        font-weight: 600; /* Common weight for headings */
+      }
+
+      /* Hero Section Adjustments */
+      .hero-title {
+        font-size: 2.8rem; /* Reduced from potentially larger size */
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+      .policy-content-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-left: 4px solid #2c7a7b; /* Luxury accent color */
+}
+
+.policy-content-wrapper .policy-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.policy-content-wrapper .policy-title::before {
+  content: "●";
+  position: absolute;
+  left: -1.8rem;
+  color: #2c7a7b;
+  font-size: 1.1rem;
+  top: 0.1rem;
+}
+
+.policy-content-wrapper p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 767.98px) {
+  .policy-content-wrapper {
+    border-left: 3px solid #2c7a7b;
+    padding-left: 1.2rem;
+  }
+  .policy-content-wrapper .policy-title::before {
+    left: -1.4rem;
+  }
+   .mb_0{
+    margin-bottom: 0;
+ }
+
+}
+
+
+      .hero-subtitle {
+        font-size: 1.1rem; /* Reduced */
+        font-weight: 400;
+        line-height: 1.7;
+        max-width: 700px; /* Constrain width for readability */
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons .btn-download,
+      .hero-buttons .btn-primary-green {
+        font-size: 0.9rem; /* Reduced button text size */
+        padding: 0.75rem 1.5rem; /* Adjusted padding */
+      }
+      .btn-primary-green {
+        font-weight: 500;
+      }
+
+      /* Vision Section Adjustments */
+      .section_padding {
+        /* Standardize section padding slightly */
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+
+      #vision h2.head {
+        font-size: 2.2rem; /* Reduced */
+        margin-bottom: 1rem; /* Adjusted spacing */
+      }
+      #vision h2.head img {
+        /* Adjust eye icon size if needed */
+        width: 70px;
+        height: auto;
+        vertical-align: middle;
+      }
+
+      #vision .paragraph p.text-muted,
+      #vision .col-md-6 p.text-muted.paragraph {
+        font-size: 1rem; /* Standard paragraph size */
+        line-height: 1.7;
+      }
+      #vision .paragraph p.text-muted:first-of-type {
+        margin-bottom: 0.5rem; /* Tighter spacing between the two intro paragraphs */
+      }
+
+      /* Pillars Section Adjustments */
+      .pillars-section {
+        padding-top: 40px; /* Slightly reduced top padding */
+        padding-bottom: 60px;
+      }
+      .pillars-icon svg {
+        width: 70px; /* Reduced size of the pillar SVG icon */
+        height: auto;
+      }
+
+      .pillars-header .section-title {
+        /* Target H2 within pillars-header */
+        font-size: 2.2rem; /* Reduced */
+        margin-top: 0.5rem; /* Space between icon and title */
+        margin-bottom: 1rem;
+      }
+
+      .pillars-description-gradient {
+        font-size: 1rem; /* Standard paragraph size */
+        line-height: 1.7;
+        max-width: 800px; /* Constrain width */
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .pillars-fullwidth-image {
+        margin-top: 2rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .bg-number-large {
+        font-size: 8rem; /* Significantly reduced background number size */
+        opacity: 0.07; /* Make them more subtle */
+      }
+
+      .pillar-card-final .pillar-title {
+        font-size: 1.3rem; /* Reduced pillar card title size */
+        font-weight: 600;
+        line-height: 1.4;
+      }
+      .pillar-card-final {
+        min-height: 320px; /* Adjust if cards feel too tall/short */
+      }
+
+      /* Promises Section Adjustments */
+      .promises-section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+      .promise-tab span {
+        font-size: 0.95rem; /* Slightly reduced tab text */
+        font-weight: 500;
+      }
+      .promise-tab {
+        padding: 0.8rem 1rem; /* Adjust tab padding */
+      }
+
+      .promises-content .section-title {
+        /* Target H2 within promises-content */
+        font-size: 2.2rem; /* Reduced */
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .promises-description {
+        font-size: 1rem; /* Standard paragraph size */
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.5rem;
+      }
+
+      .promise-tags .promise-tag {
+        font-size: 0.85rem; /* Smaller tags */
+        padding: 0.3rem 0.8rem;
+      }
+
+      .promise-item .promise-icon .icon-placeholder {
+        width: 50px; /* Adjust icon container size */
+        height: 50px;
+      }
+      .promise-item .promise-icon .icon-placeholder i {
+        font-size: 1.5rem; /* Adjust icon size */
+      }
+
+      .promise-item .promise-content h4 {
+        font-size: 1.15rem; /* Reduced promise item title */
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+      }
+
+      .promise-item .promise-content p {
+        font-size: 0.9rem; /* Reduced promise item text */
+        line-height: 1.6;
+      }
+
+      /* Footer Adjustments */
+      .footer-section {
+        padding-top: 50px;
+        padding-bottom: 30px;
+      }
+      .footer-section-title h5 {
+        font-size: 1.1rem; /* Reduced footer titles */
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      .footer-links-list li a.footer-link {
+        font-size: 0.9rem; /* Reduced footer link text */
+      }
+      .social-links .social-link {
+        width: 36px; /* Smaller social icons */
+        height: 36px;
+        font-size: 0.9rem;
+      }
+
+      /* Header Adjustments */
+      .header {
+        padding-top: 0.5rem; /* Reduce header padding if it's too tall */
+        padding-bottom: 0.5rem;
+      }
+      .nav-link {
+        font-size: 0.95rem; /* Adjust nav link font size */
+        font-weight: 500;
+      }
+
+      /* Responsive adjustments for smaller screens */
+      @media (max-width: 991.98px) {
+        .hero-title {
+          font-size: 2.2rem;
+        }
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+        #vision h2.head,
+        .pillars-header .section-title,
+        .promises-content .section-title {
+          font-size: 1.9rem;
+        }
+        .bg-number-large {
+          font-size: 6rem; /* Further reduce on medium screens */
+        }
+      }
+
+      @media (max-width: 767.98px) {
+        body {
+          font-size: 15px; /* Slightly smaller base for small devices */
+        }
+        .hero-title {
+          font-size: 1.8rem;
+        }
+        .hero-subtitle {
+          font-size: 0.95rem;
+        }
+        #vision h2.head,
+        .pillars-header .section-title,
+        .promises-content .section-title {
+          font-size: 1.7rem;
+        }
+        .pillar-card-final .pillar-title {
+          font-size: 1.15rem;
+        }
+        .promise-item .promise-content h4 {
+          font-size: 1.05rem;
+        }
+        .promise-item .promise-content p {
+          font-size: 0.85rem;
+        }
+        .section_padding,
+        .pillars-section,
+        .promises-section {
+          padding-top: 40px;
+          padding-bottom: 40px;
+        }
+        .bg-number-large {
+          display: none; /* Hide large background numbers on small screens if they cause clutter */
+        }
+      }
+     .icon-circle {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+.policy-wrapper {
+  /* max-width: 960px; */
+  margin: 0 auto;
+  padding: 20px;
+  color: #2d2d2d;
+}
+
+.policy-block {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 50px;
+}
+
+.policy-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.policy-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #34c759;
+  margin-top: 10px;
+}
+
+.policy-block p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1rem;
+}
+table thead {
+  background-color: #34c759;
+  color: #ffffff;
+}
+
+table th, table td {
+  text-align: left;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  vertical-align: top;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.policy-block ul {
+  margin-bottom: 0;
+  padding-left: 1.25rem;
+  line-height: 1.7;
+}
+.policy-block ul li{
+    padding-bottom: 0.8rem;
+}
+.section_padding{
+    padding-bottom: 0 !important;
+}
+
+
+@media (max-width: 767.98px) {
+  .policy-wrapper {
+    padding: 40px 15px;
+  }
+
+  .policy-title {
+    font-size: 1.5rem;
+  }
+
+  .policy-title::after {
+    width: 40px;
+  }
+
+  .policy-block p {
+    font-size: 1rem;
+  }
+}
+
+
+    </style>
+    <!-- END: CSS Overrides -->
+  </head>
+<body>
+   <section class="section_padding bg-light">
+  <div class="container">
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-8 text-center">
+        <h2 class="section-title">Human Rights Policy</h2>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+          <div class="policy-wrapper">
+<div class="policy-block">
+  <h2 class="policy-title">Objective</h2>
+  <p>
+    The objective of this policy is to define guiding principles for respecting and protecting the Human Rights across the Entity’s operations.
+  </p>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">Definition</h2>
+  <p>
+    The NeoLiv Group shall collectively mean all the entities associated with NeoLiv Capital Advisory, including NeoLiv Real Estate, Inliv Real Estate Fund, all the asset SPVs, including SPVs that shall form part of NCA in future.
+  </p>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">Applicability</h2>
+  <p>
+    This Policy has been approved and adopted by the Board of Directors and is applicable to the Manager and NeoLiv Group.
+  </p>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">Scope</h2>
+  <p>
+    This policy applies to all the employees and business activities, wherein NeoLiv has direct control over operations. Also, The Entity aspires to ensure that all its business partners including suppliers, vendors, contractors, consultants, customers, distributors, or anyone doing business for or with The Entity, and others acting on Company’s behalf shall respect basic Human Rights.
+  </p>
+</div>
+<div class="policy-block">
+  <h2 class="policy-title">Roles and Responsibilities</h2>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>Responsibility</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Head of HR (Management)</td>
+          <td>
+            • Accountable for performance (including compliance, resourcing, and controls) within their respective operations and locations.<br>
+            • Promotes awareness of this HR policy and awareness of Human Rights risks in their area.<br>
+            • Escalates material breaches of compliance to appropriate leadership.
+          </td>
+        </tr>
+        <tr>
+          <td>Asset specific HRBP: Operations</td>
+          <td>
+            • Implements NeoLiv’s HR Programs in all facilities and sets objectives, targets for operational performance.<br>
+            • Demonstrates leadership and champions company values in matters pertaining to Human Rights Policy.
+          </td>
+        </tr>
+        <tr>
+          <td>Ethics, Risk and Compliance</td>
+          <td>
+            • Establishes and maintains overall Human Rights Governance process including controls, conformance reviews and compliance audits.<br>
+            • Owns and maintains Human Rights Documentation Framework.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="policy-block">
+  <h2 class="policy-title">Policy Statement</h2>
+  <p>
+    NeoLiv encourages all permanent and contractual employees to strictly adhere to the below mentioned principles and condemn any violation or suspected violation of this policy.
+  </p>
+
+  <h3 class="subsection-title  mt-5">Upholding Human Rights</h3>
+  <ul>
+    <li>The Entity shall support and respect the protection of internationally proclaimed human rights;</li>
+    <li>The Entity shall ensure that it is not complicit in human rights abuses.</li>
+  </ul>
+
+  <h3 class="subsection-title  mt-5">Child Labour and Forced Labour</h3>
+  <ul>
+    <li>The Entity shall not employ any forced labour or child labour in any of its operations;</li>
+    <li>The Entity shall ensure adherence to minimum working age requirements prescribed by local regulations and prohibit employment of child labour across all operations;</li>
+    <li>The Entity shall respect the right of all workers to enter and leave employment voluntarily and not engage in compulsory, forced, indentured, or bonded labour.</li>
+  </ul>
+
+  <h3 class="subsection-title  mt-5">Human Trafficking</h3>
+  <ul>
+    <li>The Entity shall comply with all applicable national laws (including Article 23 of the Indian Constitution, “Right against exploitation”) and international laws and protocols (including "The Protocol to Prevent, Suppress and Punish Trafficking in Persons Especially Women and Children, 2000" supplementing the United Nations Convention against Transnational Organized Crime);</li>
+    <li>The Entity shall strictly ensure that it will not support any organisation/activities that are involved in human trafficking.</li>
+  </ul>
+</div>
+<div class="policy-block">
+  <h2 class="policy-title">Diversity, Equal Opportunity, and Non-Discrimination</h2>
+  <ul>
+    <li>
+      The Entity shall strive to ensure that the employees and workers are treated with dignity, respect, and fairness, and not subject to harassment, discrimination, forced labour or inhumane treatment on account of gender, sexual orientation, race, religion, caste, ethnicity, nationality, age, disability, HIV status, or socio-economic status;
+    </li>
+    <li>
+      The Entity shall aim to keep the working environment free from any prejudices, bias, and physical or mental harassment;
+    </li>
+    <li>
+      The Entity shall practice zero-tolerance towards any act of sexual harassment. Proper investigation (with an opportunity to be heard) followed by finding of guilt and strict action is undertaken as per the internal policies;
+    </li>
+    <li>
+      The Entity shall conduct employee trainings to raise awareness about non-discrimination and anti-harassment as well as adhering to the principles outlined in this policy;
+    </li>
+    <li>
+      The Entity is committed to fair remuneration, including equal pay for men and women.
+    </li>
+  </ul>
+</div>
+<div class="policy-block">
+  <h2 class="policy-title">Freedom of Association and Collective Bargaining</h2>
+  <ul>
+    <li>
+      The right to freedom of association is proclaimed in the Universal Declaration of Human Rights. The Entity supports freedom of association and the rights of its workers to lawfully and peacefully associate, organize and bargain collectively.
+    </li>
+    <li>
+      In compliance with the law, the Entity will continue to protect workers' ability to form and join a trade union of their choosing without fear of intimidation or retaliation.
+    </li>
+  </ul>
+
+  <h2 class="policy-title">Environment, Health and Safety</h2>
+  <ul>
+    <li>
+      The Entity shall strive to protect the safety, health, and well-being of the relevant stakeholders through existing management systems and safety requirements.
+    </li>
+    <li>
+      The Entity shall pursue environmentally sound business practices and work toward continual improvement in ESG performance year on year.
+    </li>
+    <li>
+      The Entity shall record and investigate all incidents and train to enhance capabilities of employees and contractors on safety concerning workplace-related hazards, associated risks and measures required to mitigate these risks.
+    </li>
+  </ul>
+
+  <h2 class="policy-title mt-5">Wages, Working Hours and Leave Benefits</h2>
+  <ul>
+    <li>
+      The Entity shall provide a flexible work culture to help in retaining the talent and keeps employees motivated and engaged.
+    </li>
+    <li>
+      The Entity shall ensure and comply with all applicable laws relating to payment of wages, working hours and overtime compensation mandated.
+    </li>
+  </ul>
+</div>
+<div class="policy-block">
+  <h2 class="policy-title">Recruitment and Employment Guidelines</h2>
+  <ul>
+    <li>The Entity shall implement a transparent process in recruitment, compensation, and promotions.</li>
+    <li>The Entity shall not tolerate any fraudulent methods of recruitment and will ensure that all terms and conditions of employment are clearly communicated to employees.</li>
+    <li>Any employee found to have falsified age documents will be subject to disciplinary action, including termination.</li>
+    <li>All contractors and subcontractors are required to ensure that no child labor or bonded labor is deployed by them in any of our Offices or Project Sites.</li>
+  </ul>
+
+  <h2 class="policy-title mt-5">Data Privacy</h2>
+  <ul>
+    <li>The Entity shall respect the privacy of all employees and business partners by taking measures prescribed by law to protect and secure personal data.</li>
+    <li>The Entity shall not disclose anyone’s personal, medical, or financial information unless legally mandated.</li>
+  </ul>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">Community Engagement</h2>
+  <ul>
+    <li>The Entity is committed to proactively engaging with local communities to build trust, mutual respect, and uphold the rights and dignity of all people in the geographies where we operate and beyond. Moving forward, we will continuously enhance our approach to prevent, minimize, and mitigate any potential impacts of our business operations on communities, creating value for our communities.</li>
+    <li>The Entity shall continue to support several community welfare, health, and educational activities, especially in communities surrounding The Entity’s locations, both directly and through trusts, by providing healthcare, education, improvement of community infrastructure, scholarships, etc.</li>
+  </ul>
+
+  <h2 class="policy-title">Workplace Security</h2>
+  <ul>
+    <li>The Entity shall commit to maintaining a safe work environment that is free from violence, harassment, intimidation, and other unsafe or disruptive conditions due to internal and external threats.</li>
+    <li>The Entity shall implement adequate security arrangements for employees, maintained with respect for employee privacy and dignity in accordance with the guidelines on Security and Human Rights.</li>
+  </ul>
+
+  <h2 class="policy-title mt-5">Contractor, Vendor and Supplier Obligation</h2>
+  <ul>
+    <li>Contractors, vendors, and suppliers are required to confirm that they do not employ child labor or bonded labor in any of our offices or project sites.</li>
+    <li>Audits and inspections will be conducted at periodic intervals to ensure compliance with this policy. Any violations identified will lead to termination of contracts and may result in subsequent legal action.</li>
+    <li>Contractors and suppliers will be informed of this policy and required to ensure that their practices align with its principles.</li>
+  </ul>
+</div>
+<div class="policy-block">
+  <h2 class="policy-title">Responsible Procurement</h2>
+  <ul>
+    <li>The Entity is committed to continuously enhancing its responsible procurement practices, ensuring that human rights considerations remain integral to its sourcing decisions.</li>
+    <li>The Entity will proactively engage with its suppliers to uphold human rights standards, striving for full compliance with all applicable laws and fostering a culture of ethical business conduct.</li>
+    <li>We will work collaboratively with our suppliers to drive adherence to NeoLiv’s Supplier Code of Conduct and Human Rights Policy, continuously strengthening our supply chain’s commitment to ethical and responsible practices.</li>
+  </ul>
+
+  <h2 class="policy-title mt-5">Compliance and Consequence of Non-compliance</h2>
+  <ul>
+    <li>No deviation to this policy shall be entertained.</li>
+    <li>The company is committed to continuously improving its efforts to eradicate child labor and bonded labor from all its operations.</li>
+    <li>Failure to comply with this policy will result in disciplinary acti disciplinary action, including
+termination of employment or business contracts.
+</li>
+  </ul>
+  <p>The company may initiate legal proceedings against those found in violation of this policy. </p>
+</div>
+<h2 class="policy-title mb_0">Review and Amendments</h2>
+  <p>This policy will be reviewed periodically to ensure its effectiveness and may be amended as required
+by the company or based on changes in the legal environment. </p>
+</div>
+
+  <!-- Add more sections similarly -->
+</div>
+
+
+        </div>
+    </div>
+  </div>
+</section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+</body>
+</html>

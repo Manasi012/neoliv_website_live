@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neoliv ESG Micro Site</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&family=Source+Serif+Pro:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="https://neoliv.in/favicon.ico" />
+
+    <!-- AOS (Animate On Scroll) -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- START: CSS Overrides to address size issues -->
+    <style>
+      /* General Typography Adjustments */
+      body {
+        font-family: "Poppins", sans-serif; /* Ensuring a consistent base font */
+        font-size: 16px; /* Standard base font size */
+        line-height: 1.6;
+        color: #333; /* A slightly softer black for body text */
+      }
+
+      h1,
+      .h1,
+      h2,
+      .h2,
+      h3,
+      .h3,
+      h4,
+      .h4,
+      h5,
+      .h5,
+      h6,
+      .h6 {
+        font-family: "Poppins", sans-serif; /* Or 'DM Sans' / 'Source Serif Pro' if preferred for headings */
+        font-weight: 600; /* Common weight for headings */
+      }
+
+      /* Hero Section Adjustments */
+      .hero-title {
+        font-size: 2.8rem; /* Reduced from potentially larger size */
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+      .policy-content-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-left: 4px solid #2c7a7b; /* Luxury accent color */
+}
+
+.policy-content-wrapper .policy-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.policy-content-wrapper .policy-title::before {
+  content: "●";
+  position: absolute;
+  left: -1.8rem;
+  color: #2c7a7b;
+  font-size: 1.1rem;
+  top: 0.1rem;
+}
+
+.policy-content-wrapper p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 767.98px) {
+  .policy-content-wrapper {
+    border-left: 3px solid #2c7a7b;
+    padding-left: 1.2rem;
+  }
+  .policy-content-wrapper .policy-title::before {
+    left: -1.4rem;
+  }
+}
+
+
+      .hero-subtitle {
+        font-size: 1.1rem; /* Reduced */
+        font-weight: 400;
+        line-height: 1.7;
+        max-width: 700px; /* Constrain width for readability */
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons .btn-download,
+      .hero-buttons .btn-primary-green {
+        font-size: 0.9rem; /* Reduced button text size */
+        padding: 0.75rem 1.5rem; /* Adjusted padding */
+      }
+      .btn-primary-green {
+        font-weight: 500;
+      }
+
+      /* Vision Section Adjustments */
+      .section_padding {
+        /* Standardize section padding slightly */
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+
+      #vision h2.head {
+        font-size: 2.2rem; /* Reduced */
+        margin-bottom: 1rem; /* Adjusted spacing */
+      }
+      #vision h2.head img {
+        /* Adjust eye icon size if needed */
+        width: 70px;
+        height: auto;
+        vertical-align: middle;
+      }
+
+      #vision .paragraph p.text-muted,
+      #vision .col-md-6 p.text-muted.paragraph {
+        font-size: 1rem; /* Standard paragraph size */
+        line-height: 1.7;
+      }
+      #vision .paragraph p.text-muted:first-of-type {
+        margin-bottom: 0.5rem; /* Tighter spacing between the two intro paragraphs */
+      }
+
+      /* Pillars Section Adjustments */
+      .pillars-section {
+        padding-top: 40px; /* Slightly reduced top padding */
+        padding-bottom: 60px;
+      }
+      .pillars-icon svg {
+        width: 70px; /* Reduced size of the pillar SVG icon */
+        height: auto;
+      }
+
+      .pillars-header .section-title {
+        /* Target H2 within pillars-header */
+        font-size: 2.2rem; /* Reduced */
+        margin-top: 0.5rem; /* Space between icon and title */
+        margin-bottom: 1rem;
+      }
+
+      .pillars-description-gradient {
+        font-size: 1rem; /* Standard paragraph size */
+        line-height: 1.7;
+        max-width: 800px; /* Constrain width */
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .pillars-fullwidth-image {
+        margin-top: 2rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .bg-number-large {
+        font-size: 8rem; /* Significantly reduced background number size */
+        opacity: 0.07; /* Make them more subtle */
+      }
+
+      .pillar-card-final .pillar-title {
+        font-size: 1.3rem; /* Reduced pillar card title size */
+        font-weight: 600;
+        line-height: 1.4;
+      }
+      .pillar-card-final {
+        min-height: 320px; /* Adjust if cards feel too tall/short */
+      }
+
+      /* Promises Section Adjustments */
+      .promises-section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+      .promise-tab span {
+        font-size: 0.95rem; /* Slightly reduced tab text */
+        font-weight: 500;
+      }
+      .promise-tab {
+        padding: 0.8rem 1rem; /* Adjust tab padding */
+      }
+
+      .promises-content .section-title {
+        /* Target H2 within promises-content */
+        font-size: 2.2rem; /* Reduced */
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .promises-description {
+        font-size: 1rem; /* Standard paragraph size */
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.5rem;
+      }
+
+      .promise-tags .promise-tag {
+        font-size: 0.85rem; /* Smaller tags */
+        padding: 0.3rem 0.8rem;
+      }
+
+      .promise-item .promise-icon .icon-placeholder {
+        width: 50px; /* Adjust icon container size */
+        height: 50px;
+      }
+      .promise-item .promise-icon .icon-placeholder i {
+        font-size: 1.5rem; /* Adjust icon size */
+      }
+
+      .promise-item .promise-content h4 {
+        font-size: 1.15rem; /* Reduced promise item title */
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+      }
+
+      .promise-item .promise-content p {
+        font-size: 0.9rem; /* Reduced promise item text */
+        line-height: 1.6;
+      }
+
+      /* Footer Adjustments */
+      .footer-section {
+        padding-top: 50px;
+        padding-bottom: 30px;
+      }
+      .footer-section-title h5 {
+        font-size: 1.1rem; /* Reduced footer titles */
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      .footer-links-list li a.footer-link {
+        font-size: 0.9rem; /* Reduced footer link text */
+      }
+      .social-links .social-link {
+        width: 36px; /* Smaller social icons */
+        height: 36px;
+        font-size: 0.9rem;
+      }
+
+      /* Header Adjustments */
+      .header {
+        padding-top: 0.5rem; /* Reduce header padding if it's too tall */
+        padding-bottom: 0.5rem;
+      }
+      .nav-link {
+        font-size: 0.95rem; /* Adjust nav link font size */
+        font-weight: 500;
+      }
+
+.policy-block ul {
+  margin-bottom: 0;
+  padding-left: 1.25rem;
+  line-height: 1.7;
+}
+.policy-block ul li{
+    padding-bottom: 0.8rem;
+}
+      /* Responsive adjustments for smaller screens */
+      @media (max-width: 991.98px) {
+        .hero-title {
+          font-size: 2.2rem;
+        }
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+        #vision h2.head,
+        .pillars-header .section-title,
+        .promises-content .section-title {
+          font-size: 1.9rem;
+        }
+        .bg-number-large {
+          font-size: 6rem; /* Further reduce on medium screens */
+        }
+      }
+
+      @media (max-width: 767.98px) {
+        body {
+          font-size: 15px; /* Slightly smaller base for small devices */
+        }
+        .hero-title {
+          font-size: 1.8rem;
+        }
+        .hero-subtitle {
+          font-size: 0.95rem;
+        }
+        #vision h2.head,
+        .pillars-header .section-title,
+        .promises-content .section-title {
+          font-size: 1.7rem;
+        }
+        .pillar-card-final .pillar-title {
+          font-size: 1.15rem;
+        }
+        .promise-item .promise-content h4 {
+          font-size: 1.05rem;
+        }
+        .promise-item .promise-content p {
+          font-size: 0.85rem;
+        }
+        .section_padding,
+        .pillars-section,
+        .promises-section {
+          padding-top: 40px;
+          padding-bottom: 40px;
+        }
+        .bg-number-large {
+          display: none; /* Hide large background numbers on small screens if they cause clutter */
+        }
+      }
+     .icon-circle {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+.policy-wrapper {
+  /* max-width: 960px; */
+  margin: 0 auto;
+  padding: 20px;
+  color: #2d2d2d;
+}
+
+.policy-block {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 50px;
+}
+
+.policy-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.policy-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #34c759;
+  margin-top: 10px;
+}
+
+.policy-block p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1rem;
+}
+.section_padding{
+    padding-bottom: 0 !important;
+}
+
+
+@media (max-width: 767.98px) {
+  .policy-wrapper {
+    padding: 40px 15px;
+  }
+
+  .policy-title {
+    font-size: 1.5rem;
+  }
+
+  .policy-title::after {
+    width: 40px;
+  }
+
+  .policy-block p {
+    font-size: 1rem;
+  }
+   .mb_0{
+    margin-bottom: 0;
+ }
+
+}
+
+
+    </style>
+    <!-- END: CSS Overrides -->
+  </head>
+<body>
+   <section class="section_padding bg-light">
+  <div class="container">
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-8 text-center">
+        <h2 class="section-title">Code of Conduct Policy</h2>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+          <div class="policy-wrapper">
+  <div class="policy-block">
+    <h2 class="policy-title">Preamble / Foreword</h2>
+  </div>
+
+  <div class="policy-block">
+    <h2 class="policy-title">1. Scope and Purpose</h2>
+    <p>
+      This Code of Conduct outlines the ethical standards and professional behaviour expected of and how
+we at NeoLiv Group behave with all employees, agents, customers, financial stakeholders, value
+chain partners, channel partners, consultants, vendors, government representatives, communiƟes
+and the environment. 
+    </p>
+  </div>
+
+  <div class="policy-block">
+    <h2 class="policy-title">2. Equal Opportunity Employer</h2>
+    <p>
+     NeoLiv Group provides equal employment opportunity to all qualified persons without
+discrimination based on age, sex, race, disability, marital status, or religion in accordance with
+applicable local, state and naƟonal laws and regulations. 
+    </p>
+    <p>
+     All employment decisions will be based solely upon individuals’ qualifications, experience, prior
+contribution and demonstrated capacity to perform at higher or improved levels of performance and
+will be in accordance with the principle of equal employment opportunity.
+    </p>
+  </div>
+
+  <div class="policy-block">
+  <h2 class="policy-title">3. Workplace Conduct</h2>
+  <p>
+    <strong>NeoLiv group is committed to treat all employees, client and third parties with respect</strong> and dignity
+and is responsible to always maintain a professional demeanour in the workplace NeoLiv group will
+not tolerate any form of harassment including sexual harassment, mental harassment, bullying or
+discrimination and is commiƩed to take all necessary steps to ensure that employees are not
+subjected to any form of harassment or discrimination at workplace. 
+  </p>
+  <p>
+    We are committed to ensuring a workplace that is free from any form of discrimination or harassment. Any such incident brought to our notice will be dealt with zero tolerance. Employees must report any incidents of sexual harassment to the Internal Committee, as defined under the POSH Policy and in accordance with the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013
+  </p>
+  <p>Anyone directly or indirectly associated with NeoLiv who experiences or witnesses any form of discrimination or harassment may report the incident to the Human Resources Department or the Founder & CEO</p>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">4. Open Door Communication</h2>
+  <p>
+   The NeoLiv Group aims to foster an environment of trust, transparency, and open dialogue within the organization, ensuring that employees feel comfortable and supported in raising concerns, sharing ideas, and seeking guidance from the management team.
+  </p>
+</div>
+<div class="policy-block">
+  <h2 class="policy-title">5. Safe and Secured Environment</h2>
+  <p>
+    The NeoLiv Group is committed to providing its employees with a safe, healthy, and respectful working environment, and will not tolerate any form of violence, whether within company premises or during any company-related activities conducted outside.
+  </p>
+  <p>
+    Employees must report any such incidents to the Human Resources Leader or the Founder & CEO.
+  </p>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">6. Conflict of Interest</h2>
+  <p>
+    A conflict of interest arises when an individual's personal interests, relationships, or activities interfere with—or appear to interfere with—their ability to act in the best interests of the organization. Examples include, but are not limited to:
+  </p>
+  <ul style="padding-left: 1.5rem; line-height: 1.8; color: #555;">
+    <li>Having a financial interest in a competitor, supplier, or customer.</li>
+    <li>Receiving gifts or favors from entities seeking to do business with the organization.</li>
+    <li>Engaging in outside employment or consulting that conflicts with the organization’s interests.</li>
+    <li>Using confidential information for personal gain.</li>
+  </ul>
+  <p>
+    Employees and other individuals associated with NeoLiv Group must disclose any potential or actual conflicts of interest as soon as they become aware of them. Disclosures should be made to the Reporting Manager, Human Resources, and the designated Compliance Officer on a real-time basis.
+  </p>
+  <p>
+    All employees, at the time of joining NeoLiv, are required to make a mandatory disclosure as per the process prescribed by the Company.
+  </p>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">9. Media Presentation</h2>
+  <p>
+    Employees are strictly prohibited from sharing any company-related information, data, or engaging in communication with media channels—including television, radio, newspapers, social media, or any other platform—without prior authorization or written approval from the Founder and CEO.
+  </p>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">10. Anti-Money Laundering and Combating Financial Terrorism</h2>
+  <p>
+    NeoLiv Group is committed to implementing effective frameworks that prevent, detect, and report illicit financial activities, ensuring compliance with international standards and applicable regulations.
+  </p>
+  <p>
+    This includes conducting regular risk assessments, performing customer due diligence, establishing procedures for detecting and reporting suspicious transactions, and ensuring that records are readily accessible for review by regulatory authorities.
+  </p>
+  <p>
+    NeoLiv Group shall maintain a robust internal control system to safeguard against money laundering and terrorist financing activities. The organization ensures full compliance with all applicable laws and stays updated on any legal or regulatory changes and industry best practices.
+  </p>
+  <p>
+    NeoLiv Capital Advisory Private Limited has a detailed policy in place specifically for Anti-Money Laundering (AML) and Combating Financial Terrorism (CFT).
+  </p>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">11. Anti-Bribery and Anti-Corruption</h2>
+  <p>
+    NeoLiv Group strictly prohibits all forms of bribery and corruption. Employees must avoid any actions that could be perceived as corrupt or unethical.
+  </p>
+  <p>
+    Facilitation payments, intended to expedite routine government actions, are strictly forbidden. Any demand for such payments must be reported immediately to the Compliance Officer.
+  </p>
+  <p>
+    Employees are not allowed to offer or accept gifts, hospitality, or entertainment that could influence or appear to influence business decisions. Due diligence must be conducted prior to engaging third parties—including agents, consultants, and suppliers—to ensure adherence to anti-bribery and anti-corruption laws.
+  </p>
+  <p>
+    All contracts with external parties must include anti-bribery and anti-corruption clauses. Any suspected or actual cases of bribery or corruption must be reported without delay to the Compliance Officer or Human Resources.
+  </p>
+</div>
+<div class="policy-block">
+  <h2 class="policy-title">12. Advertising and Marketing</h2>
+  <p>
+    Employees at NeoLiv Group must ensure that all advertising and marketing materials are accurate, truthful, and not misleading in any way. All applicable advertising laws and regulations, including fair housing laws, must be strictly adhered to.
+  </p>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">13. Enforcement and Disciplinary Actions</h2>
+  <p>
+    All reported violations of this Code of Conduct will be promptly and thoroughly investigated. If a violation is confirmed, appropriate disciplinary action will be taken, which may include warnings, suspension, or termination of employment.
+  </p>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">14. Acknowledgment</h2>
+  <p>
+    All employees, agents, members of the Investment Committee, Directors (including those appointed to the Board), the Key Investment Team, and associates are required to acknowledge that they have read, understood, and agreed to comply with this Code of Conduct.
+  </p>
+</div>
+<div class="policy-block mb_0">
+  <h2 class="policy-title">15. Policy Review</h2>
+  <p>
+    NeoLiv Group will review this policy on a periodic basis in response to changes in regulatory compliance requirements and evolving business needs. Any updates or developments to the Code of Conduct will be communicated to the relevant stakeholders as and when necessary.
+  </p>
+</div>
+
+<div class="policy-block">
+    <h4 class="mb-3">Annexure A: </h4>
+  <h2 class="policy-title">Code of Conduct as an Alternative Investment Fund</h2>
+  <ul>
+    <li>Carry out its business activities and invest in accordance with the investment objectives stated in the PPM and other Fund Documents.</li>
+    <li>Be operated and managed in the interest of all Contributors and not solely in the interest of the Sponsor, Investment Manager, its directors, or any select class of Contributors.</li>
+    <li>Ensure the dissemination of adequate, accurate, explicit, and timely information in accordance with the AIF Regulations and Fund Documents to all Contributors.</li>
+    <li>Put in place an effective risk management process and ensure appropriate internal controls are in place.</li>
+    <li>Abide by the Conflict-of-Interest Policy as specified in the PPM to identify, monitor, and appropriately mitigate any potential conflict of interest throughout the scope of its business.</li>
+    <li>Not use any unethical means to sell, market, or induce any potential Contributor to buy its Units.</li>
+    <li>Have written policies and procedures to comply with Anti-Money Laundering laws.</li>
+  </ul>
+  <p class="policy-title">Code of Conduct for the Investment Manager, its Directors, Key Investment Team, and Management Personnel</p>
+  <p>
+    Neoliv Capital Advisory Private Limited, its directors, the key investment team, and other key management personnel of the Company and Fund shall:
+  </p>
+  <ul>
+  <li>Abide by the SEBI Act, 1992 (15 of 1992), including all applicable rules, regulations, guidelines, and circulars relevant to AIFs at all times.</li>
+  <li>Maintain integrity, and uphold the highest ethical and professional standards in all business dealings.</li>
+  <li>Ensure proper care, due diligence, and exercise of independent professional judgment in all decision-making processes.</li>
+  <li>Act in a fiduciary capacity towards investors of the Fund and ensure that decisions are taken in the interest of the Contributors.</li>
+  <li>Abide by the policies adopted by the Fund to identify, monitor, and appropriately mitigate any potential conflict of interest throughout the scope of its business.</li>
+  <li>Not make any misleading or inaccurate statement, whether oral or written, either about their qualifications or capability to render investment management services or their achievements.</li>
+  <li>Record in writing the investment, divestment, and other key decisions, together with appropriate justification for such decisions.</li>
+  <li>Provide appropriate and well-considered inputs, which are not misleading, as required by the valuer to carry out appropriate valuation of the portfolio.</li>
+  <li>Not enter into arrangements for sale or purchase of securities where there is no effective change in beneficial interest or where the transfer of beneficial interest is only between parties who are acting in concert or collusion, other than for bona fide and legally valid reasons.</li>
+  <li>Abide by confidentiality agreements with the Contributors and not make improper use of the details of personal investments and/or other information of Contributors.</li>
+  <li>Not offer or accept any inducement in connection with the affairs of or business of managing the funds of Contributors.</li>
+  <li>Document all relevant correspondence and understanding during a deal with counterparties as per the records of the Fund, if they have committed to the transactions on behalf of the Fund.</li>
+  <li>Maintain ethical standards of conduct and deal fairly and honestly with Portfolio Entities at all times.</li>
+  <li>Maintain confidentiality of information received from existing and potential Portfolio Entities of the Fund, unless explicit confirmation is received that such information is not subject to any non-disclosure agreement.</li>
+</ul>
+
+
+<strong>Code of Conduct for members of the Investment CommiƩee, Trustee and its directors</strong>
+<p>The members of the Investment CommiƩee, Trustee and its directors shall: 
+</p>
+
+<ul>
+    <li>Maintain integrity and the highest ethical and professional standards of conduct.</li>
+    <li>Ensure proper care and exercise due diligence and independent professional judgment in carrying out their roles.</li>
+    <li>Disclose details of any conflict of interest relating to any/all decisions in a timely manner to the Investment Manager, adhere to the Conflict-of-Interest Policy adopted by the Fund, and, where necessary, recuse themselves from the decision-making process.</li>
+    <li>Maintain confidentiality of information received regarding the Fund, the Contributors, and Portfolio Entities unless explicit confirmation is received that such information is not subject to any non-disclosure agreement.</li>
+    <li>Not indulge in any unethical practice or professional misconduct or any act, whether by omission or commission, which amounts to gross negligence or fraud.</li>
+  </ul>
+</div>
+
+
+<div class="policy-block">
+    <h4 class="mb-3">Annexure B: </h4>
+  <h2 class="policy-title">CODE OF CONDUCT- PORTFOLIO MANAGER</h2>
+  <ul>
+    <li>
+      In the conduct of business, observe high standards of integrity and fairness in all dealings
+      with clients and other Portfolio Managers.
+    </li>
+    <li>
+      The money received from a client for an investment purpose should be deployed as soon as
+      possible for that purpose, and money due and payable to a client should be paid forthwith.
+    </li>
+    <li>
+      Shall render at all times high standards of service, exercise due diligence, ensure proper care,
+      and exercise independent professional judgment. The Company shall either avoid any
+      conflict of interest in investment or disinvestment decisions or, where any conflict of interest
+      arises, ensure fair treatment to all customers. It shall disclose to the clients possible sources
+      of conflict of interest while providing unbiased services. The Company shall not place its
+      interest above those of its clients.
+    </li>
+    <li>
+      It shall not execute any trade against the interest of the clients in its proprietary account.
+    </li>
+    <li>
+      It shall not make any statement or indulge in any act, practice, or unfair competition,
+      which is likely to be harmful to the interests of other Portfolio Managers or is likely to
+      place such other portfolio managers in a disadvantageous position in relation to the Company
+      while competing for or executing any assignment.
+    </li>
+    <li>
+      It shall not make any exaggerated statement, whether oral or written, to the client either
+      about the qualification or the capability to render certain services or its achievements in
+      regard to services rendered to other clients.
+    </li>
+    <li>
+    At the time of entering into a contract, the Company shall obtain in writing from the client
+    their interest in various corporate bodies which enables them to obtain unpublished
+    price-sensitive information of the body corporate.
+  </li>
+  <li>
+    It shall not disclose to any clients or to the press any confidential information about its client,
+    which has come to its knowledge.
+  </li>
+  <li>
+    The Company shall, where necessary and in the interest of the client, take adequate steps for
+    the transfer of the client’s securities and for claiming and receiving dividends, interest payments,
+    and other rights accruing to the client. It shall also take necessary action for conversion of securities
+    and subscription for/renunciation of rights in accordance with the client’s instructions.
+  </li>
+  <li>
+    A Company shall endeavour to –
+    <ul>
+      <li>
+        ensure that investors are made aware of attendant risks before any investment decision is taken by them.
+      </li>
+       <li>
+        Render the best possible advice to the client having regard to the client's needs, the environment, and the Company's own professional skills;
+      </li>
+      <li>
+        Ensure that all professional dealings are effected in a prompt, efficient, and cost-effective manner.
+      </li>
+    </ul>
+  </li>
+   <li>
+    <ol type="1">
+      <li>
+        The Company shall not be a party to:
+        <ul>
+          <li>Creation of false market in securities</li>
+          <li>Price rigging or manipulation of securities</li>
+          <li>
+            Passing of price-sensitive information to brokers, members of the recognized stock exchanges, or any other intermediaries in the capital market or taking any other action which is prejudicial to the interest of the investors.
+          </li>
+        </ul>
+      </li>
+      <li>
+        No portfolio manager or any of its directors, partners, or managers shall, either on their own or through associates, family members, or relatives, enter into any transaction in securities of companies on the basis of unpublished price-sensitive information obtained by them during the course of any professional assignment.
+      </li>
+    </ol>
+  </li>
+  <li>
+    <ul class="list-unstyled">
+      <li>
+        The Company or any of its employees shall not render, directly or indirectly, any investment advice about any security in the publicly accessible media, whether real-time or non-real-time, unless a disclosure of their long or short position in the said security has been made while rendering such advice.
+      </li>
+      <li>
+        In case an employee of the Company is rendering such advice, they shall also disclose the interest of their dependent family members and the employer, including their long or short position in the said security, while rendering such advice.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <ul class="list-unstyled">
+      <li>The Company shall abide by the Act, Rules, and Regulations made thereunder and the Guidelines/Schemes issued by SEBI.</li>
+      <li>The Company shall comply with the code of conduct specified in the SEBI (Prohibition of Insider Trading) Regulations, 2015.</li>
+      <li>
+       The Company shall not use his status as any other registered intermediary to unduly influence
+the investment decision of the clients while rendering porƞolio management services.
+      </li>
+    </ul>
+  </li>
+  </ul>
+  </div>
+
+
+  <!-- Add more sections similarly -->
+</div>
+
+
+        </div>
+    </div>
+  </div>
+</section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+</body>
+</html>

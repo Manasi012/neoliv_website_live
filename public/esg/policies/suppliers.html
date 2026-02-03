@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neoliv ESG Micro Site</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&family=Source+Serif+Pro:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="https://neoliv.in/favicon.ico" />
+
+    <!-- AOS (Animate On Scroll) -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- START: CSS Overrides to address size issues -->
+    <style>
+      /* General Typography Adjustments */
+      body {
+        font-family: "Poppins", sans-serif; /* Ensuring a consistent base font */
+        font-size: 16px; /* Standard base font size */
+        line-height: 1.6;
+        color: #333; /* A slightly softer black for body text */
+      }
+
+      h1,
+      .h1,
+      h2,
+      .h2,
+      h3,
+      .h3,
+      h4,
+      .h4,
+      h5,
+      .h5,
+      h6,
+      .h6 {
+        font-family: "Poppins", sans-serif; /* Or 'DM Sans' / 'Source Serif Pro' if preferred for headings */
+        font-weight: 600; /* Common weight for headings */
+      }
+
+      /* Hero Section Adjustments */
+      .hero-title {
+        font-size: 2.8rem; /* Reduced from potentially larger size */
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+      .policy-content-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-left: 4px solid #2c7a7b; /* Luxury accent color */
+}
+
+.policy-content-wrapper .policy-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.policy-content-wrapper .policy-title::before {
+  content: "●";
+  position: absolute;
+  left: -1.8rem;
+  color: #2c7a7b;
+  font-size: 1.1rem;
+  top: 0.1rem;
+}
+
+.policy-content-wrapper p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 767.98px) {
+  .policy-content-wrapper {
+    border-left: 3px solid #2c7a7b;
+    padding-left: 1.2rem;
+  }
+  .policy-content-wrapper .policy-title::before {
+    left: -1.4rem;
+  }
+}
+
+
+      .hero-subtitle {
+        font-size: 1.1rem; /* Reduced */
+        font-weight: 400;
+        line-height: 1.7;
+        max-width: 700px; /* Constrain width for readability */
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons .btn-download,
+      .hero-buttons .btn-primary-green {
+        font-size: 0.9rem; /* Reduced button text size */
+        padding: 0.75rem 1.5rem; /* Adjusted padding */
+      }
+      .btn-primary-green {
+        font-weight: 500;
+      }
+
+      /* Vision Section Adjustments */
+      .section_padding {
+        /* Standardize section padding slightly */
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+
+      #vision h2.head {
+        font-size: 2.2rem; /* Reduced */
+        margin-bottom: 1rem; /* Adjusted spacing */
+      }
+      #vision h2.head img {
+        /* Adjust eye icon size if needed */
+        width: 70px;
+        height: auto;
+        vertical-align: middle;
+      }
+
+      #vision .paragraph p.text-muted,
+      #vision .col-md-6 p.text-muted.paragraph {
+        font-size: 1rem; /* Standard paragraph size */
+        line-height: 1.7;
+      }
+      #vision .paragraph p.text-muted:first-of-type {
+        margin-bottom: 0.5rem; /* Tighter spacing between the two intro paragraphs */
+      }
+
+      /* Pillars Section Adjustments */
+      .pillars-section {
+        padding-top: 40px; /* Slightly reduced top padding */
+        padding-bottom: 60px;
+      }
+      .pillars-icon svg {
+        width: 70px; /* Reduced size of the pillar SVG icon */
+        height: auto;
+      }
+
+      .pillars-header .section-title {
+        /* Target H2 within pillars-header */
+        font-size: 2.2rem; /* Reduced */
+        margin-top: 0.5rem; /* Space between icon and title */
+        margin-bottom: 1rem;
+      }
+
+      .pillars-description-gradient {
+        font-size: 1rem; /* Standard paragraph size */
+        line-height: 1.7;
+        max-width: 800px; /* Constrain width */
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .pillars-fullwidth-image {
+        margin-top: 2rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .bg-number-large {
+        font-size: 8rem; /* Significantly reduced background number size */
+        opacity: 0.07; /* Make them more subtle */
+      }
+
+      .pillar-card-final .pillar-title {
+        font-size: 1.3rem; /* Reduced pillar card title size */
+        font-weight: 600;
+        line-height: 1.4;
+      }
+      .pillar-card-final {
+        min-height: 320px; /* Adjust if cards feel too tall/short */
+      }
+
+      /* Promises Section Adjustments */
+      .promises-section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+      }
+      .promise-tab span {
+        font-size: 0.95rem; /* Slightly reduced tab text */
+        font-weight: 500;
+      }
+      .promise-tab {
+        padding: 0.8rem 1rem; /* Adjust tab padding */
+      }
+
+      .promises-content .section-title {
+        /* Target H2 within promises-content */
+        font-size: 2.2rem; /* Reduced */
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .promises-description {
+        font-size: 1rem; /* Standard paragraph size */
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.5rem;
+      }
+
+      .promise-tags .promise-tag {
+        font-size: 0.85rem; /* Smaller tags */
+        padding: 0.3rem 0.8rem;
+      }
+
+      .promise-item .promise-icon .icon-placeholder {
+        width: 50px; /* Adjust icon container size */
+        height: 50px;
+      }
+      .promise-item .promise-icon .icon-placeholder i {
+        font-size: 1.5rem; /* Adjust icon size */
+      }
+
+      .promise-item .promise-content h4 {
+        font-size: 1.15rem; /* Reduced promise item title */
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+      }
+
+      .promise-item .promise-content p {
+        font-size: 0.9rem; /* Reduced promise item text */
+        line-height: 1.6;
+      }
+
+      /* Footer Adjustments */
+      .footer-section {
+        padding-top: 50px;
+        padding-bottom: 30px;
+      }
+      .footer-section-title h5 {
+        font-size: 1.1rem; /* Reduced footer titles */
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      .footer-links-list li a.footer-link {
+        font-size: 0.9rem; /* Reduced footer link text */
+      }
+      .social-links .social-link {
+        width: 36px; /* Smaller social icons */
+        height: 36px;
+        font-size: 0.9rem;
+      }
+
+      /* Header Adjustments */
+      .header {
+        padding-top: 0.5rem; /* Reduce header padding if it's too tall */
+        padding-bottom: 0.5rem;
+      }
+      .nav-link {
+        font-size: 0.95rem; /* Adjust nav link font size */
+        font-weight: 500;
+      }
+
+      /* Responsive adjustments for smaller screens */
+      @media (max-width: 991.98px) {
+        .hero-title {
+          font-size: 2.2rem;
+        }
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+        #vision h2.head,
+        .pillars-header .section-title,
+        .promises-content .section-title {
+          font-size: 1.9rem;
+        }
+        .bg-number-large {
+          font-size: 6rem; /* Further reduce on medium screens */
+        }
+      }
+
+      @media (max-width: 767.98px) {
+        body {
+          font-size: 15px; /* Slightly smaller base for small devices */
+        }
+        .hero-title {
+          font-size: 1.8rem;
+        }
+        .hero-subtitle {
+          font-size: 0.95rem;
+        }
+        #vision h2.head,
+        .pillars-header .section-title,
+        .promises-content .section-title {
+          font-size: 1.7rem;
+        }
+        .pillar-card-final .pillar-title {
+          font-size: 1.15rem;
+        }
+        .promise-item .promise-content h4 {
+          font-size: 1.05rem;
+        }
+        .promise-item .promise-content p {
+          font-size: 0.85rem;
+        }
+        .section_padding,
+        .pillars-section,
+        .promises-section {
+          padding-top: 40px;
+          padding-bottom: 40px;
+        }
+        .bg-number-large {
+          display: none; /* Hide large background numbers on small screens if they cause clutter */
+        }
+      }
+     .icon-circle {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+.policy-wrapper {
+  /* max-width: 960px; */
+  margin: 0 auto;
+  padding: 20px;
+  color: #2d2d2d;
+}
+
+.policy-block {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 50px;
+}
+
+.policy-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.policy-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #34c759;
+  margin-top: 10px;
+}
+
+.policy-block p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1rem;
+}
+table thead {
+  background-color: #34c759;
+  color: #ffffff;
+}
+
+table th, table td {
+  text-align: left;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  vertical-align: top;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.policy-block ul {
+  margin-bottom: 0;
+  padding-left: 1.25rem;
+  line-height: 1.7;
+}
+.policy-block ul li{
+    padding-bottom: 0.8rem;
+}
+.section_padding{
+    padding-bottom: 0 !important;
+}
+
+@media (max-width: 767.98px) {
+  .policy-wrapper {
+    padding: 40px 15px;
+  }
+
+  .policy-title {
+    font-size: 1.5rem;
+  }
+
+  .policy-title::after {
+    width: 40px;
+  }
+
+  .policy-block p {
+    font-size: 1rem;
+  }
+   .mb_0{
+    margin-bottom: 0;
+ }
+
+}
+
+
+    </style>
+    <!-- END: CSS Overrides -->
+  </head>
+<body>
+   <section class="section_padding bg-light">
+  <div class="container">
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-8 text-center">
+        <h2 class="section-title">Supplier Code Of Conduct Policy</h2>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+          <div class="policy-wrapper">
+<div class="policy-block">
+  <h2 class="policy-title">Purpose</h2>
+  <p>
+    The Code sets the framework for NeoLiv Group suppliers to conduct business in a compliant manner and promote sound practices for environmental, social, health and safety management.
+  </p>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">Applicability</h2>
+  <p>
+    This Policy has been approved and adopted by the Board of Directors and is applicable to the Manager and NeoLiv Group. All the associated suppliers shall comply with the Code.
+  </p>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">Defination</h2>
+  <p>
+   <strong>“Applicable Law”</strong> means any statute, law, regulation, ordinance, rule, judgement, order, decree, bye-law, approval of any Governmental Agency, directive, guideline, policy, requirement or other government restriction or any similar form of decision of or determination by, or any interpretation having the force of law of any of the foregoing Governmental Agency having jurisdiction, applicable to any Party, in force from time to time.
+  </p>
+  <p>
+    <strong>“NeoLiv Group / NeoLiv”</strong> The NeoLiv Group shall collectively mean all the entities associated with NeoLiv Capital Advisory, including NeoLiv Real Estate, Inliv Real Estate Fund, all the asset SPVs, including SPVs that shall form part of NCA in future
+  </p>
+  <p>
+    <strong>“Stakeholder/s”</strong> shall mean individuals or groups of individuals, who have interests or abilities to influence outcomes of business activities across operations, supply chain and business partnerships, as well as those who are directly or indirectly impacted or affected by business activities of the Entity.
+  </p>
+  <p>
+    <strong>“Supplier/s”</strong> shall mean suppliers/service providers/ vendors/ traders / agents / contractors engaged for the purpose of development and maintenance of the assets in the portfolio of NeoLiv Group.
+  </p>
+</div>
+<div class="policy-block">
+  <h2 class="policy-title">Code Principles </h2>
+  <p>
+<p class="d-block">
+  <strong>Legal Compliance
+</strong>
+</p>
+NeoLiv Group’s Suppliers shall comply with applicable laws, codes or regulations of the countries, states, and localities in which they operate. This includes, but is not limited to, laws and regulations relating to environmental, occupational health and safety, and labor practices.
+
+  </p>
+<p class="d-block">
+  <strong>Health and Safety
+</strong>
+</p>
+NeoLiv Group’s suppliers shall provide their employees with a safe and healthy working environment in order to prevent accidents and injuries arising out of, linked with, or occurring in the course of work or as a result of the operations of the Suppliers. Suppliers shall, among other things, do the following:
+
+  </p>
+  <ul>
+    <li>Provide occupational health and safety training to their employees</li>
+    <li>
+      Have a system in place for injury and illness reporting
+    </li>
+    <li>Worker exposure to physically demanding tasks, including manual material handling and heavy lifting, prolonged standing and highly repetitive or forceful assembly tasks is to be identified, evaluated and controlled</li>
+    <li>Make available medical treatment and/or compensation as per applicable laws to injured/ill workers arising as a result of working for the Supplier</li>
+    <li>Worker exposure to chemical, biological, and physical agents is to be identified, evaluated and controlled. When hazards cannot be adequately controlled by engineering and administrative means, workers are to be provided with appropriate personal protective equipment.</li>
+    <li>Machine safeguarding and other protective measures to prevent injuries/illnesses to workers</li>
+    <li>
+      Workers shall be provided clean and safe facilities including clean toilet facilities, access to potable water and sanitary food preparation and storage facilities.
+    </li>
+    <li>
+      Worker dormitories provided by the Suppliers shall be clean, safe, and provide emergency egress, adequate heat and ventilation and reasonable personal space.
+    </li>
+  </ul>
+</div>
+
+<div class="policy-block">
+  <h2 class="policy-title">Labor and Human Rights</h2>
+  <p>
+   NeoLiv Group expects its Suppliers to adopt sound labour practices and treat their workers fairly in accordance with local laws and regulations. In addition, Suppliers must comply with the following standards:
+  </p>
+<ul>
+  <li><strong>Freely Chosen Employment :</strong> Suppliers shall not use any forced labor, whether in the form of prison labor, indentured labor, bonded labor or otherwise.</li>
+  <li>
+    <strong>No Child Labor :</strong> Suppliers shall comply with local minimum working age laws and requirements and not employ child labor.
+  </li>
+  <li>
+    <strong>Minimum Wages:</strong> Suppliers shall provide wages for regular and overtime work and benefits that at least meet legal requirements.
+  </li>
+  <li>
+    <strong>Working Hours:</strong> Suppliers shall not require workers to work more than the maximum hours of daily labor required legally.
+  </li>
+  <li>
+    	<strong>No Harsh, Inhumane Treatment or Abuse:</strong> Suppliers shall treat each employee with dignity and respect. In no event shall Supplier’s workers be subject to threats of violence, physical punishment, confinement, or other form of physical, sexual, psychological, or verbal harassment or abuse.
+  </li>
+    <li><strong>No Discrimination:</strong> Suppliers shall not discriminate in its employment practices based on race, color, religion, sex, age, physical disability, national origin, creed, or any other basis prohibited by law.</li>
+    <li>
+      <strong>Freedom of Association:</strong> Suppliers shall recognize and respect the rights of its workers to join or to refrain from joining associations of their own choosing and the right to collective bargaining in accordance with local labor laws and established practices. 
+    </li>
+</ul>
+</div>
+<div class="policy-block">
+  <h2 class="policy-title">Environment</h2>
+  <p>
+    Protecting the environment and contributing to sustainable development is of great importance to NeoLiv Group. Suppliers shall actively strive to increase the positive and limit the negative impact of their operations and supply chain on the environment and society. Suppliers shall comply with applicable environmental laws and regulations. Such compliance shall include, among other things, the following:
+  </p>
+  <ul>
+    <li>Comply all laws pertaining to sustainability, pollution, environment protection etc. as applicable. Also, obtain and maintain environmental permits and timely filing of required reports.</li>
+    <li>Proper handling and disposition of hazardous materials</li>
+    <li>Monitoring, controlling, and treating discharges generated from operations</li>
+    <li>Suppliers are encouraged to adopt resource-efficient practices to optimize processes, conserve natural resources, and manage greenhouse gas emissions, contributing to a reduced environmental footprint.</li>
+    <li>Suppliers are expected to take proactive initiatives on an ongoing basis to promote environmental responsibility and explore environmentally friendly and energy-efficient processes and technologies.</li>
+    <li>Efforts should be made to prevent pollution and manage waste—whether hazardous, non-hazardous, industrial, solid, liquid, or gaseous—while aligning with prevailing regulations and best practices.</li>
+    <li>Business activities should be conducted in an environmentally responsible manner, considering the entity's guidelines and applicable environmental policies.</li>
+    <li>Suppliers are encouraged to support biodiversity conservation and take measures to avoid deforestation in their business operations.</li>
+  </ul>
+</div>
+
+<div class="policy-block mb_0">
+  <h2 class="policy-title">Anti-Corruption and Competition Law</h2>
+  <p>
+    NeoLiv Group is committed to conducting business with high ethical integrity. NeoLiv Group has zero tolerance of corruption, including bribery, unlawful kickbacks, extortion, etc. We also respect competition laws which prohibit abuse of market position. Suppliers shall:
+  </p>
+  <ul>
+    <li>Comply with applicable anti-corruption laws and shall not engage in any form of corrupt practices.</li>
+    <li>Respect and comply with applicable competition laws and regulations, and establish systems to prevent competition law infringements, such as price fixing, market sharing or bid rigging.</li>
+    <li>
+      Not offer or give any inappropriate/improper benefit or favor or incentive to any regulatory bodies, government official, company representative, third party or engage with parties that may have conflict of interest.
+    </li>
+    <li>
+      	Comply with all applicable data protection and privacy laws and regulations. Suppliers shall treat all information provided by the Company in confidence and shall not disclose such information to unauthorized third parties or the public.
+    </li>
+  </ul>
+</div>
+<div class="policy-block mb_0">
+  <h2 class="policy-title">Subcontracting</h2>
+  <p>
+   The Supplier shall not use any subcontractor in connection business unless the subcontractor agrees to NeoLiv’s Supplier Code of Conduct and its terms and conditions. Prior to the start of work, the Supplier must submit a declaration to the Company, along with a list of subcontractors. Any changes in subcontracting must be immediately reported to the Company.
+  </p>
+</div>
+<div class="policy-block mb_0">
+  <h2 class="policy-title">Monitoring and Compliance
+</h2>
+  <p>
+    Suppliers shall conduct periodic audits to ensure compliance with this Code and applicable legal requirements. NeoLiv Group or its representatives may engage in monitoring activities to confirm Supplier’s compliance to this Code, including on-site inspections of facilities, use of questionnaires, review of publicly available information, or other measures necessary to assess supplier’s performance.
+  </p>
+</div>
+<div class="policy-block mb_0">
+  <h2 class="policy-title">Management and Review</h2>
+  <p>
+    This Code shall be reviewed annually. This Policy shall stand amended to the extent of any change in Applicable Law and Regulations. The Board of Directors of the Manager reserves the right to amend or modify this Policy in whole or in part.
+  </p>
+</div>
+
+  <!-- Add more sections similarly -->
+</div>
+
+
+        </div>
+    </div>
+  </div>
+</section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+</body>
+</html>
