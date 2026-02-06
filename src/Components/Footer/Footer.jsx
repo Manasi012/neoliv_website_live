@@ -100,18 +100,21 @@ const Footer = () => {
             <div className="md:flex">
               <div className="pt-5 md:pb-0 pb-5">
                 <p className="md:pe-10 md:ps-3">
-                  Level 6, Two Horizon Centre, Golf Course Road, DLF Phase 5,
-                  Gurugram, Haryana-122002, India
+                  MQDC Tapasya One, 6th Floor, Cabin no 607 & 608, Above Shoppers Stop, Sector 53, Golf Course Road, Gurugram, Haryana -122011, India
+                  {/* Level 6, Two Horizon Centre, Golf Course Road, DLF Phase 5,
+                  Gurugram, Haryana-122002, India */}
                 </p>
               </div>
-              <iframe
+             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.4202871158172!2d77.10318699999999!3d28.436744299999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d193825a2d3c3%3A0xbdb0f426b0ee9923!2sShoppers%20Stop%20Ltd%20-%20Tapasya%20One!5e0!3m2!1sen!2sin!4v1770298326085!5m2!1sen!2sin" width="100%" height="180" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+              {/* <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14031.798526687844!2d77.0962813!3d28.4509347!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18b58a137a1b%3A0x769c85e8414cd673!2sCorporatedge%20Two%20Horizon%20Centre!5e0!3m2!1sen!2sin!4v1717046727666!5m2!1sen!2sin"
                 width="100%"
                 height="180"
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
+              ></iframe> */}
             </div>
           </div>
         </div>
