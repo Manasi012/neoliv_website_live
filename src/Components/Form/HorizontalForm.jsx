@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { Menu } from "@headlessui/react";
-import axios from "axios";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+// Update this URL after deploying the backend to Vercel
+const API_BASE = "https://neoliv-backend-otp.vercel.app";
 
 const HorizontalForm = () => {
   const [formData, setFormData] = useState({
@@ -48,27 +50,35 @@ const HorizontalForm = () => {
     // Required field validation
     if (!formData.name.trim()) return toast.error("Please enter your name");
     if (!formData.email.trim()) return toast.error("Please enter your email");
-    if (!formData.mobile.trim()) return toast.error("Please enter your mobile number");
-    if (!formData.configuration.trim()) return toast.error("Please select configuration");
+    if (!formData.mobile.trim())
+      return toast.error("Please enter your mobile number");
+    if (!formData.configuration.trim())
+      return toast.error("Please select configuration");
 
     setIsSendingOtp(true);
 
     try {
-      const response = await axios.post("http://localhost:5000/send-otp", {
-        mobile: formData.mobile,
+      const response = await fetch(`${API_BASE}/api/send-otp`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ mobile: formData.mobile }),
       });
+      const responseData = await response.json();
+      // Normalise: treat non-ok HTTP as an error
+      if (!response.ok)
+        throw new Error(responseData.message || "Failed to send OTP");
 
-      if (response.data.verifyId) {
+      if (responseData.verifyId) {
         toast.success("OTP sent successfully");
-        setVerifyId(response.data.verifyId);
+        setVerifyId(responseData.verifyId);
         setShowOtpField(true);
         setIsOtpSent(true);
       } else {
-        toast.error(response.data.message || "Failed to send OTP");
+        toast.error(responseData.message || "Failed to send OTP");
       }
     } catch (error) {
       console.error("Error sending OTP:", error);
-      toast.error("Something went wrong while sending OTP");
+      toast.error(error.message || "Something went wrong while sending OTP");
     }
 
     setIsSendingOtp(false);
@@ -80,7 +90,7 @@ const HorizontalForm = () => {
 
     setIsVerifyingOtp(true);
     try {
-      const response = await fetch("http://localhost:5000/verify-otp", {
+      const response = await fetch(`${API_BASE}/api/verify-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ verifyId, otp }),
@@ -105,7 +115,7 @@ const HorizontalForm = () => {
   // Submit Lead
   const handleSubmitLead = async () => {
     try {
-      const response = await fetch("http://localhost:5000/create-lead", {
+      const response = await fetch(`${API_BASE}/api/create-lead`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -144,8 +154,14 @@ const HorizontalForm = () => {
   };
 
   return (
-    <div id="contact-form" className="flex justify-center items-center md:mx-32 mx-10 my-0 md:mt-5">
-      <form className="w-full p-4 rounded-lg shadow-md" onSubmit={(e) => e.preventDefault()}>
+    <div
+      id="contact-form"
+      className="flex justify-center items-center md:mx-32 mx-10 my-0 md:mt-5"
+    >
+      <form
+        className="w-full p-4 rounded-lg shadow-md"
+        onSubmit={(e) => e.preventDefault()}
+      >
         <div className="flex flex-wrap -mx-4 pb-10">
           {/* Left Column */}
           <div className="w-full lg:w-1/2 px-4">
@@ -166,7 +182,9 @@ const HorizontalForm = () => {
                     <PhoneInput
                       country={"in"}
                       value={formData.mobile}
-                      onChange={(value) => setFormData({ ...formData, mobile: value })}
+                      onChange={(value) =>
+                        setFormData({ ...formData, mobile: value })
+                      }
                       inputStyle={{
                         width: "100%",
                         border: "none",
@@ -236,25 +254,33 @@ const HorizontalForm = () => {
               className="w-full mb-4 px-4 py-2 border-0 border-b border-blue-950 focus:outline-none focus:ring focus:border-blue-500"
               required
             />
-            <Menu as="div" className="relative inline-block text-left w-full mb-4">
+            <Menu
+              as="div"
+              className="relative inline-block text-left w-full mb-4"
+            >
               <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 bg-white px-4 py-[11px] text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                 {formData.configuration || "Select Configuration"}
-                <ChevronDownIcon aria-hidden="true" className="-mr-1 size-5 text-gray-400" />
+                <ChevronDownIcon
+                  aria-hidden="true"
+                  className="-mr-1 size-5 text-gray-400"
+                />
               </Menu.Button>
               <Menu.Items className="absolute right-0 z-10 mt-2 w-full font-medium origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
                 <div className="py-1">
-                  {["Residential Township Plots", "Residential villas"].map((item) => (
-                    <Menu.Item key={item}>
-                      {({ active }) => (
-                        <button
-                          onClick={() => handleConfigurationChange(item)}
-                          className={`${active ? "bg-gray-100 text-gray-900" : "text-gray-700"} block w-full px-4 py-2 text-sm`}
-                        >
-                          {item}
-                        </button>
-                      )}
-                    </Menu.Item>
-                  ))}
+                  {["Residential Township Plots", "Residential villas"].map(
+                    (item) => (
+                      <Menu.Item key={item}>
+                        {({ active }) => (
+                          <button
+                            onClick={() => handleConfigurationChange(item)}
+                            className={`${active ? "bg-gray-100 text-gray-900" : "text-gray-700"} block w-full px-4 py-2 text-sm`}
+                          >
+                            {item}
+                          </button>
+                        )}
+                      </Menu.Item>
+                    ),
+                  )}
                 </div>
               </Menu.Items>
             </Menu>
