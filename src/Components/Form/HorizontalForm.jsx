@@ -219,7 +219,7 @@ const HorizontalForm = () => {
                     value={otp}
                     style={{ width: "100%" }}
                     onChange={(e) => setOtp(e.target.value)}
-                    className="border px-4 py-2 rounded-md mb-2 w-full"
+                    className="border px-4 py-2 mb-2 w-full"
                   />
                   <button
                     onClick={handleOtpVerify}
@@ -258,16 +258,16 @@ const HorizontalForm = () => {
               as="div"
               className="relative inline-block text-left w-full mb-4"
             >
-              <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 bg-white px-4 py-[11px] text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                {formData.configuration || "Select Configuration"}
+              <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 bg-white px-4 py-[10px] text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                {formData.configuration || "Select Project"}
                 <ChevronDownIcon
                   aria-hidden="true"
                   className="-mr-1 size-5 text-gray-400"
                 />
               </Menu.Button>
-              <Menu.Items className="absolute right-0 z-10 mt-2 w-full font-medium origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
+              <Menu.Items className="absolute right-0 z-10 mt-2 w-full font-medium origin-top-right  bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
                 <div className="py-1">
-                  {["Residential Township Plots", "Residential villas"].map(
+                  {["NeoLiv Grand Park", "Neoliv Grand Forest Prive"].map(
                     (item) => (
                       <Menu.Item key={item}>
                         {({ active }) => (
