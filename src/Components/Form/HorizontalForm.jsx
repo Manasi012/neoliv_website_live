@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { Menu } from "@headlessui/react";
@@ -6,7 +6,6 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// Update this URL after deploying the backend to Vercel
 const API_BASE = "https://neoliv-backend-otp.vercel.app";
 
 const HorizontalForm = () => {
@@ -14,46 +13,76 @@ const HorizontalForm = () => {
     name: "",
     email: "",
     mobile: "",
+    configuration: "",
+    city: "",
+    project: "",
+    whatsappOptIn: true,
     source: "source",
     subsource: "subsource",
     countryCode: "+91",
     country: "India",
-    configuration: "",
     url: window.location.href,
     refererUrl: document.referrer,
-    whatsappOptIn: true,
   });
 
-  const [otp, setOtp] = useState("");
+  const [selectedConfiguration, setSelectedConfiguration] = useState("");
+  const [selectedCity, setSelectedCity] = useState("");
+
   const [verifyId, setVerifyId] = useState("");
-  const [showOtpField, setShowOtpField] = useState(false);
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [isOtpVerified, setIsOtpVerified] = useState(false);
+  const [showOtpField, setShowOtpField] = useState(false);
   const [isSendingOtp, setIsSendingOtp] = useState(false);
   const [isVerifyingOtp, setIsVerifyingOtp] = useState(false);
 
+  const [otpArray, setOtpArray] = useState(["", "", "", "", "", ""]);
+  const [timer, setTimer] = useState(30);
+  const [canResend, setCanResend] = useState(false);
+
+  const projectData = {
+    NCR: "Neoliv Grand Park",
+    Mumbai: "Neoliv Grand Forest Prive",
+  };
+
+  // Timer
+  useEffect(() => {
+    let interval;
+    if (isOtpSent && timer > 0) {
+      interval = setInterval(() => setTimer((prev) => prev - 1), 1000);
+    }
+    if (timer === 0) setCanResend(true);
+    return () => clearInterval(interval);
+  }, [isOtpSent, timer]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleCheckboxChange = (e) => {
-    setFormData({ ...formData, whatsappOptIn: e.target.checked });
+  const handleOtpChange = (value, index) => {
+    if (!/^\d?$/.test(value)) return;
+
+    const newOtp = [...otpArray];
+    newOtp[index] = value;
+    setOtpArray(newOtp);
+
+    if (value && index < 5) {
+      document.getElementById(`otp-${index + 1}`).focus();
+    }
   };
 
-  const handleConfigurationChange = (value) => {
-    setFormData({ ...formData, configuration: value });
+  const handleOtpKeyDown = (e, index) => {
+    if (e.key === "Backspace" && !otpArray[index] && index > 0) {
+      document.getElementById(`otp-${index - 1}`).focus();
+    }
   };
 
-  // Send OTP
   const handleOtpSend = async () => {
-    // Required field validation
-    if (!formData.name.trim()) return toast.error("Please enter your name");
-    if (!formData.email.trim()) return toast.error("Please enter your email");
-    if (!formData.mobile.trim())
-      return toast.error("Please enter your mobile number");
-    if (!formData.configuration.trim())
-      return toast.error("Please select configuration");
+    if (!formData.name.trim()) return toast.error("Enter your name");
+    if (!formData.email.trim()) return toast.error("Enter your email");
+    if (!formData.mobile.trim()) return toast.error("Enter mobile number");
+    if (!selectedConfiguration) return toast.error("Select configuration");
+    if (!selectedCity) return toast.error("Select Project");
 
     setIsSendingOtp(true);
 
@@ -63,74 +92,78 @@ const HorizontalForm = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ mobile: formData.mobile }),
       });
-      const responseData = await response.json();
-      // Normalise: treat non-ok HTTP as an error
-      if (!response.ok)
-        throw new Error(responseData.message || "Failed to send OTP");
 
-      if (responseData.verifyId) {
-        toast.success("OTP sent successfully");
-        setVerifyId(responseData.verifyId);
-        setShowOtpField(true);
-        setIsOtpSent(true);
-      } else {
-        toast.error(responseData.message || "Failed to send OTP");
-      }
-    } catch (error) {
-      console.error("Error sending OTP:", error);
-      toast.error(error.message || "Something went wrong while sending OTP");
+      const data = await response.json();
+      if (!response.ok) throw new Error();
+
+      toast.success("OTP sent successfully!");
+      setVerifyId(data.verifyId);
+      setShowOtpField(true);
+      setIsOtpSent(true);
+      setTimer(30);
+      setCanResend(false);
+    } catch {
+      toast.error("OTP send failed");
     }
 
     setIsSendingOtp(false);
   };
 
-  // Verify OTP
   const handleOtpVerify = async () => {
-    if (!otp.trim()) return toast.error("Please enter OTP");
+    const finalOtp = otpArray.join("");
+    if (finalOtp.length !== 6)
+      return toast.error("Enter complete OTP");
 
     setIsVerifyingOtp(true);
+
     try {
       const response = await fetch(`${API_BASE}/api/verify-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ verifyId, otp }),
+        body: JSON.stringify({ verifyId, otp: finalOtp }),
       });
 
       const result = await response.json();
 
       if (result.status === "VERIFIED") {
-        setIsOtpVerified(true);
         toast.success("OTP Verified!");
+        setIsOtpVerified(true);
         handleSubmitLead();
       } else {
-        toast.error(result.message || "Invalid OTP");
+        toast.error("Invalid OTP");
       }
-    } catch (error) {
-      console.error("OTP verification error:", error);
-      toast.error("Error verifying OTP");
+    } catch {
+      toast.error("Verification error");
     }
+
     setIsVerifyingOtp(false);
   };
 
-  // Submit Lead
   const handleSubmitLead = async () => {
     try {
+      const dataToSubmit = {
+        ...formData,
+        configuration: selectedConfiguration,
+        city: selectedCity,
+        project: projectData[selectedCity],
+      };
+
       const response = await fetch(`${API_BASE}/api/create-lead`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(dataToSubmit),
       });
 
-      const data = await response.json();
-      console.log("Lead Data:", data);
-
       if (response.ok) {
-        toast.success("Lead submitted successfully!");
+        toast.success("Lead Submitted Successfully!");
+
         setFormData({
           name: "",
           email: "",
           mobile: "",
           configuration: "",
+          city: "",
+          project: "",
           whatsappOptIn: true,
           source: "source",
           subsource: "subsource",
@@ -139,167 +172,228 @@ const HorizontalForm = () => {
           url: window.location.href,
           refererUrl: document.referrer,
         });
-        setOtp("");
+
+        setSelectedCity("");
+        setSelectedConfiguration("");
+        setOtpArray(["", "", "", "", "", ""]);
         setIsOtpSent(false);
         setIsOtpVerified(false);
         setShowOtpField(false);
-        setVerifyId("");
-      } else {
-        toast.error(data.message || "Lead submit failed");
       }
-    } catch (error) {
-      console.error("Submit error:", error);
-      toast.error("Submit error");
+    } catch {
+      toast.error("Submission error");
     }
   };
 
   return (
-    <div
-      id="contact-form"
-      className="flex justify-center items-center md:mx-32 mx-10 my-0 md:mt-5"
-    >
+    <div className="flex items-center justify-center bg-gradient-to-b from-blue-950 to-indigo-950 px-6 py-12" id="contact-form">
       <form
-        className="w-full p-4 rounded-lg shadow-md"
+        className="w-full max-w-5xl bg-white/10 border border-white/20 rounded-3xl shadow-2xl p-12 grid grid-cols-1 md:grid-cols-2 gap-8"
         onSubmit={(e) => e.preventDefault()}
       >
-        <div className="flex flex-wrap -mx-4 pb-10">
-          {/* Left Column */}
-          <div className="w-full lg:w-1/2 px-4">
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Name"
-              className="w-full px-4 py-2 border-0 border-b border-blue-950 focus:outline-none focus:ring focus:border-blue-500 mb-4"
-              required
-            />
-            <div className="p-0">
-              {!isOtpSent && (
-                <>
-                  <div className="flex flex-col md:flex-row md:items-center md:space-x-4 pt-0">
-                    <PhoneInput
-                      country={"in"}
-                      value={formData.mobile}
-                      onChange={(value) =>
-                        setFormData({ ...formData, mobile: value })
-                      }
-                      inputStyle={{
-                        width: "100%",
-                        border: "none",
-                        padding: "20px",
-                        borderRadius: "0",
-                        paddingLeft: "3rem",
-                      }}
-                      className="mt-0"
-                      dropdownStyle={{ color: "#000" }}
-                      containerClass="phone-input"
-                      inputClass="phone-input-field"
-                    />
-                  </div>
-                  <div className="flex justify-center mt-4">
+        {/* LEFT */}
+        <div className="flex flex-col gap-6">
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Name"
+            className="px-5 py-2 rounded-xl bg-white/20 text-white placeholder-white/70 focus:ring-2 focus:ring-white outline-none"
+          />
+
+       
+
+          <PhoneInput
+            country={"in"}
+            value={formData.mobile}
+            onChange={(value) =>
+              setFormData((prev) => ({ ...prev, mobile: value }))
+            }
+            inputStyle={{
+              width: "100%",
+              borderRadius: "12px",
+              border: "none",
+              padding: "20px 10px",
+              paddingLeft: "3rem",
+              background: "rgba(255,255,255,0.2)",
+              color: "white",
+            }}
+          />
+
+           {/* Location */}
+          <Menu as="div" className="relative w-full">
+            <Menu.Button className="w-full flex justify-between items-center px-5 py-2 rounded-xl bg-white/20 text-white">
+              {selectedCity || "Select Project"}
+              <ChevronDownIcon className="w-5 h-5" />
+            </Menu.Button>
+            <Menu.Items className="absolute mt-2 w-full bg-white rounded-xl shadow-xl z-20">
+              {["NCR", "Mumbai"].map((city) => (
+                <Menu.Item key={city}>
+                  {({ active }) => (
                     <button
                       type="button"
-                      className="px-4 py-2 border md:mb-0 mb-4 border-white bg-blue-700 text-white font-medium rounded-xl hover:bg-blue-700 transition duration-200"
-                      onClick={handleOtpSend}
-                      disabled={isSendingOtp}
+                      onClick={() => {
+                        setSelectedCity(city);
+                        setFormData((prev) => ({
+                          ...prev,
+                          city,
+                          project: projectData[city],
+                        }));
+                      }}
+                      className={`w-full px-4 py-3 text-left ${
+                        active ? "bg-gray-100" : ""
+                      }`}
                     >
-                      {isSendingOtp ? "Sending OTP..." : "Send OTP"}
+                      {city}
                     </button>
-                  </div>
-                </>
-              )}
-
-              {isOtpSent && !isOtpVerified && showOtpField && (
-                <div className="flex flex-col items-center">
-                  <input
-                    type="text"
-                    placeholder="Enter OTP"
-                    value={otp}
-                    style={{ width: "100%" }}
-                    onChange={(e) => setOtp(e.target.value)}
-                    className="border px-4 py-2 mb-2 w-full"
-                  />
-                  <button
-                    onClick={handleOtpVerify}
-                    disabled={isVerifyingOtp}
-                    className="px-4 py-2 border border-white bg-green-600 text-white font-medium rounded-xl hover:bg-green-700 transition duration-200"
-                  >
-                    {isVerifyingOtp ? "Verifying OTP..." : "Verify OTP"}
-                  </button>
-                </div>
-              )}
-
-              {isOtpVerified && (
-                <button
-                  onClick={handleSubmitLead}
-                  className="px-6 py-2 bg-blue-700 text-white rounded-xl mt-4"
-                >
-                  Submit Form
-                </button>
-              )}
-            </div>
-          </div>
-
-          {/* Right Column */}
-          <div className="w-full lg:w-1/2 px-4">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Email"
-              className="w-full mb-4 px-4 py-2 border-0 border-b border-blue-950 focus:outline-none focus:ring focus:border-blue-500"
-              required
-            />
-            <Menu
-              as="div"
-              className="relative inline-block text-left w-full mb-4"
-            >
-              <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 bg-white px-4 py-[10px] text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                {formData.configuration || "Select Project"}
-                <ChevronDownIcon
-                  aria-hidden="true"
-                  className="-mr-1 size-5 text-gray-400"
-                />
-              </Menu.Button>
-              <Menu.Items className="absolute right-0 z-10 mt-2 w-full font-medium origin-top-right  bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
-                <div className="py-1">
-                  {["NeoLiv Grand Park", "Neoliv Grand Forest Prive"].map(
-                    (item) => (
-                      <Menu.Item key={item}>
-                        {({ active }) => (
-                          <button
-                            onClick={() => handleConfigurationChange(item)}
-                            className={`${active ? "bg-gray-100 text-gray-900" : "text-gray-700"} block w-full px-4 py-2 text-sm`}
-                          >
-                            {item}
-                          </button>
-                        )}
-                      </Menu.Item>
-                    ),
                   )}
-                </div>
-              </Menu.Items>
-            </Menu>
-            <div className="flex items-center">
-              <input
-                type="checkbox"
-                id="whatsappOptIn"
-                name="whatsappOptIn"
-                checked={formData.whatsappOptIn}
-                onChange={handleCheckboxChange}
-                className="mr-2"
-              />
-              <label htmlFor="whatsappOptIn" className="text-white">
-                Opt for WhatsApp notifications
-              </label>
+                </Menu.Item>
+              ))}
+            </Menu.Items>
+          </Menu>
+
+          {selectedCity && (
+            <div className="px-4 py-3 rounded-xl bg-white/15 text-white text-sm border border-white/20">
+              Project:{" "}
+              <span className="font-semibold">
+                {projectData[selectedCity]}
+              </span>
             </div>
-          </div>
+          )}
         </div>
+
+        {/* RIGHT */}
+        <div className="flex flex-col gap-6">
+
+             <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Email ID"
+            className="px-5 py-2 rounded-xl bg-white/20 text-white placeholder-white/70 focus:ring-2 focus:ring-white outline-none"
+          />
+
+          {/* Configuration */}
+          <Menu as="div" className="relative w-full">
+            <Menu.Button className="w-full flex justify-between items-center px-5 py-2 rounded-xl bg-white/20 text-white">
+              {selectedConfiguration || "Select Configuration"}
+              <ChevronDownIcon className="w-5 h-5" />
+            </Menu.Button>
+            <Menu.Items className="absolute mt-2 w-full bg-white rounded-xl shadow-xl z-20">
+              {["Residential Township Plots", "Residential Villas"].map(
+                (item) => (
+                  <Menu.Item key={item}>
+                    {({ active }) => (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedConfiguration(item);
+                          setFormData((prev) => ({
+                            ...prev,
+                            configuration: item,
+                          }));
+                        }}
+                        className={`w-full px-4 py-3 text-left ${
+                          active ? "bg-gray-100" : ""
+                        }`}
+                      >
+                        {item}
+                      </button>
+                    )}
+                  </Menu.Item>
+                )
+              )}
+            </Menu.Items>
+          </Menu>
+
+         
+<div className="flex items-center gap-3 px-5 py-2.5 rounded-xl bg-white/20 text-white placeholder-white/70 focus:ring-2 focus:ring-white outline-none">
+  <input
+    type="checkbox"
+    checked={formData.whatsappOptIn}
+    onChange={(e) =>
+      setFormData((prev) => ({
+        ...prev,
+        whatsappOptIn: e.target.checked,
+      }))
+    }
+    className="w-4 h-4 accent-green-500 cursor-pointer"
+  />
+
+  <label className="text-white text-sm cursor-pointer">
+   Opt for notifications 
+  </label>
+</div>
+        
+        </div>
+
+        
+
+        {/* OTP SECTION */}
+        {isOtpSent && showOtpField && !isOtpVerified && (
+          <div className="md:col-span-2 flex flex-col items-center gap-6">
+       
+            <div className="flex gap-3">
+              {otpArray.map((digit, index) => (
+                <input
+                  key={index}
+                  id={`otp-${index}`}
+                  maxLength="1"
+                  value={digit}
+                  onChange={(e) =>
+                    handleOtpChange(e.target.value, index)
+                  }
+                  onKeyDown={(e) =>
+                    handleOtpKeyDown(e, index)
+                  }
+                  className="w-10 h-10 text-center text-lg font-semibold rounded-xl bg-white/20 text-white border border-white/30 focus:border-white outline-none"
+                />
+              ))}
+            </div>
+
+            {!canResend ? (
+              <p className="text-white text-sm">
+                Resend OTP in {timer}s
+              </p>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  setTimer(30);
+                  setCanResend(false);
+                  handleOtpSend();
+                }}
+                className="text-blue-400 text-sm font-semibold"
+              >
+                Resend OTP
+              </button>
+            )}
+
+            <button
+              type="button"
+              onClick={handleOtpVerify}
+              className="p-4 bg-blue-950 rounded-3xl text-white border-white font-bold"
+            >
+              {isVerifyingOtp ? "Verifying..." : "Verify & Submit"}
+            </button>
+          </div>
+        )}
+
+        {!isOtpSent && (
+          <div className="md:col-span-2 flex justify-center">
+            <button
+              type="button"
+              onClick={handleOtpSend}
+              className="py-3 px-7 bg-blue-950 border border-white rounded-3xl text-white font-bold"
+            >
+              {isSendingOtp ? "Sending..." : "Send OTP"}
+            </button>
+          </div>
+        )}
       </form>
+
       <ToastContainer />
     </div>
   );

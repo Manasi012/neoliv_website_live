@@ -13,6 +13,13 @@ body {
 .bg_indigo1 {
   background: linear-gradient(90deg, #715CC9, #715CC9, #715CC9, #715CC9, #715CC9, #715CC9, #715CC9);
 }
+.react-tel-input .form-control::placeholder {
+  color: rgba(255,255,255,0.7);
+  font-size: 1rem;
+  
+  letter-spacing: 0.08px;
+  font-family: "Montserrat";
+}
 
 .footer_box {
   background-color: #364b7d7e;
