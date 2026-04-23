@@ -48,7 +48,7 @@ const newsData = [
     },
 
   {
-      description: "NeoLiv sells all residential plots in Hariyana project, generetes over Rs 300 crore in revenue",
+      description: "NeoLiv sells 263 residential plots for over Rs 300 crore in Haryana",
       imageUrl:
         "https://propstory.in/Neoliv/press-release-image.jpg",
       buttonText: "News",
@@ -71,7 +71,7 @@ const newsData = [
    
   
   {
-    description: "Mohit Malhotra’s official confirmationon....",
+    description: "Mohit Malhotra’s official confirmation on....",
     imageUrl:
       "https://cdn.propstory.com/magicpages/NAME/16iwl4kl6ilvqbdejjvcccircle.png",
     buttonText: "News",
