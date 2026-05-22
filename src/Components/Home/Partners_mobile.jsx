@@ -28,11 +28,11 @@ const Partners_mobile = () => {
       name: "Chandan",
       Description: "Kar",
     },
-    {
-      src: "https://cdn.propstory.com/magicpages/NAME/16iwl4kl6ilwg3yqteBHASKER%20JAIN_11zon.png",
-      name: "Bhasker",
-      Description: "Jain",
-    },
+    // {
+    //   src: "https://cdn.propstory.com/magicpages/NAME/16iwl4kl6ilwg3yqteBHASKER%20JAIN_11zon.png",
+    //   name: "Bhasker",
+    //   Description: "Jain",
+    // },
     {
       src: "https://cdn.propstory.com/magicpages/NAME/16iwl4kl6ilwg3zkyaSIDDHARTH%20JAIN_11zon.png",
       name: "Siddharth",

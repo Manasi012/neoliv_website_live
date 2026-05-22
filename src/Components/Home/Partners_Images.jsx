@@ -1,5 +1,5 @@
 import React from "react";
-import PPTSlides from "../../Assets/imgs/PPTSLIDE0807.png";
+import PPTSlides from "../../Assets/imgs/PPTSLIDE0807.jpeg";
 
 
 const Partners_Images = () => {
