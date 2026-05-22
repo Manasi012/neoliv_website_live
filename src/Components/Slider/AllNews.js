@@ -20,10 +20,19 @@ import pdfFile14 from '../../Assets/pdf/Alibaug_Pdf.pdf';
 import pdfFilePR from '../../Assets/pdf/FinalPressreleasereport.pdf';
 import pdfFileArticle1 from '../../Assets/pdf/NeoLivRs600crProject.pdf';
 import pdfFileArticle2 from '../../Assets/pdf/Real-estate-startup.pdf';
+import pdfFileArticle3 from '../../Assets/pdf/NeoLivKhopoliLandDeal.pdf';
+
 
 
 
 const newsData = [
+   {
+    description: "NeoLiv acquires 76 acres land in Maharashtra's Khopoli for plotted development, villa project",
+    imageUrl: "https://magicpage-dev.propstory.com/ImageUploads/Image_Upload/1nnx5eapkmhkaux83.webp",
+    buttonText: "News",
+    pdfUrl: pdfFileArticle3,
+
+  },
         {
     description: "NeoLiv inks management agreement for 47-acre mixed-use villa project in Khopoli, near Mumbai",
     imageUrl: "https://magicpage-dev.propstory.com/ImageUploads/Image_Upload/1nnx5eapkmhkaux83.webp",
@@ -105,6 +114,7 @@ const newsData = [
     buttonText: "News",
     pdfUrl: pdfFile8,
   },
+  
 ];
 
 function AllNews() {
