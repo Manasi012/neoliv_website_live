@@ -135,7 +135,7 @@ const FinanciallySecure = () => {
         <h3 className="text-4xl text-blue-950">Statregic Equity Inverstor</h3>
         <p className="text-lg font-medium">
           India’s leading wealth and alternates focused asset firm 360 ONE
-          manages more than USD 65 Bn AUM and helps over 6800 UHNI families to
+          manages more than INR 6 Lakh crore and helps over 6800 UHNI families to
           manage, grow and preserve their wealth and legacy.
         </p>
         <div className="md:flex justify-center items-center md:px-10">

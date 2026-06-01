@@ -37,7 +37,7 @@ const Herosection = () => {
               both fund management business and an in house development arm
               founded by Mohit Malhotra (ex MD & CEO of Godrej Properties), top
               industry experts and 360 ONE (Formerly IIFL Wealth)- India’s
-              leading wealth management firm with more than USD 65 Bn AUM.
+              leading wealth management firm with more than INR 6 Lakh crore.
             </p>
           </div>
         </div>

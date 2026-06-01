@@ -118,7 +118,7 @@ const Team = () => {
             >
               The platform has secured funding from UHNI family offices and 360
               ONE - India’s leading wealth management firm with more
-              than USD 65 Bn AUM
+              than INR 6 Lakh crore
             </li>
             <li
               data-aos="fade-up"
