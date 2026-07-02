@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Partners_mobile from "./Partners_mobile";
+import Partners_Mobile from "./Partners_Mobile";
 
 
 const Partners = () => {
@@ -67,6 +67,12 @@ const Partners = () => {
      {
       src: "https://magicpage-dev.propstory.com/ImageUploads/Image_Upload/1nnx5eapkmdvy55e8.webp",
       name: "Milind Apte",
+      Description: "Partner",
+       style: "padding: 0.5rem;",
+    },
+    {
+      src: "https://magicpage-dev.propstory.com/ImageUploads/ravi%20temp/1nnx5eapkmr3aooh3.webp",
+      name: "P. Rajendran",
       Description: "Partner",
        style: "padding: 0.5rem;",
     },
@@ -314,6 +320,58 @@ const Partners = () => {
         { year: "2025", company: "NeoLiv", completed: true },
       ],
     },
+
+     {
+      name: "P. Rajendran",
+      about:
+        "Rajendran has over 29 years of experience in the Indian real estate industry and possesses in-depth knowledge and expertise in PAN India execution and operations. He has extensive experience in marketing, sales, business development, and operations.",
+ 
+        abouthobby:
+        "Outside of work, he enjoys playing cricket, travelling, and watching movies.",
+     
+      progress: [
+        {
+          year: "1997",
+          company: "Eureka Forbes",
+          completed: true,
+        },
+        // { year: "2001", company: "Independent Contractor", completed: true },
+        { year: "2003", company: "Mahindra\u00A0& Mahindra(Automotive Division)", completed: true },
+        { year: "2005", company: "Tata\u00A0 Housing Dev. Co\u00A0Ltd.", completed: true },
+        {
+          year: "2013",
+          company: "Self Employed (North\u00A0 Star Realty)",
+          completed: true,
+        },
+        {
+          year: "2015",
+          company: "Klick Brick Real Estate",
+          completed: true,
+        },
+        {
+          year: "2017",
+          company: "Tata Value Homes Ltd.",
+          completed: true,
+        },
+        {
+          year: "2020",
+          company: "Aliens Group, Hyderabad",
+          completed: true,
+        },
+        {
+          year: "2023",
+          company: "Shapoorji Pallonji",
+          completed: true,
+        },
+        {
+          year: "2025",
+          company: "Shree Naman\u00A0 Group",
+          completed: true,
+        },
+       
+        { year: "2026", company: "NeoLiv", completed: true },
+      ],
+    },
   ];
 
   const addLineBreaks = (text) => {
@@ -342,7 +400,7 @@ const Partners = () => {
           clicked ? "fixed top-0 left-0 h-full w-screen z-50 bg-white" : ""
         }`}
       >
-        <div className="grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-8 gap-0 mx-10">
+        <div className="grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-9 gap-0 mx-10">
           {images.map((image, index) => (
             <div
               key={index}
@@ -450,7 +508,7 @@ const Partners = () => {
       </div>
 
       <div className="md:hidden">
-        <Partners_mobile />
+        <Partners_Mobile />
       </div>
     </>
   );
