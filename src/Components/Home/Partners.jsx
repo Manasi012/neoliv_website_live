@@ -49,11 +49,11 @@ const Partners = () => {
       name: "Tej Ingle",
       Description: "Partner",
     },
-    {
-      src: "https://cdn.propstory.com/magicpages/NAME/16iwl4kl6ilwivmrn9Hariprakash.png",
-      name: "Hariprakash Pandey",
-      Description: "Partner",
-    },
+    // {
+    //   src: "https://cdn.propstory.com/magicpages/NAME/16iwl4kl6ilwivmrn9Hariprakash.png",
+    //   name: "Hariprakash Pandey",
+    //   Description: "Partner",
+    // },
     {
       src: "https://cdn.propstory.com/magicpages/NAME/16iwl4kl6ilwivmwrsViral.png",
       name: "Viral Vora",
@@ -183,20 +183,20 @@ const Partners = () => {
         { year: "2023", company: "NeoLiv", completed: true },
       ],
     },
-    {
-      name: "Hariprakash Pandey",
-      about:
-        "Proven track record of 22 years in fund raise, financial business planning, risk management, compliance, taxation.​",
-      abouthobby:
-        "Hari likes playing sports and reading books. He is also a coach on finance and investment strategies.",
-      progress: [
-        { year: "2000", company: "Goldstar\u00A0Jewellery", completed: true },
-        { year: "2003", company: "ICS Group ", completed: true },
-        { year: "2005", company: "HDIL", completed: true },
-        { year: "2014", company: "Runwal", completed: true },
-        { year: "2024", company: "NeoLiv", completed: true },
-      ],
-    },
+    // {
+    //   name: "Hariprakash Pandey",
+    //   about:
+    //     "Proven track record of 22 years in fund raise, financial business planning, risk management, compliance, taxation.​",
+    //   abouthobby:
+    //     "Hari likes playing sports and reading books. He is also a coach on finance and investment strategies.",
+    //   progress: [
+    //     { year: "2000", company: "Goldstar\u00A0Jewellery", completed: true },
+    //     { year: "2003", company: "ICS Group ", completed: true },
+    //     { year: "2005", company: "HDIL", completed: true },
+    //     { year: "2014", company: "Runwal", completed: true },
+    //     { year: "2024", company: "NeoLiv", completed: true },
+    //   ],
+    // },
     {
       name: "Viral P Vora",
       about:
@@ -400,7 +400,7 @@ const Partners = () => {
           clicked ? "fixed top-0 left-0 h-full w-screen z-50 bg-white" : ""
         }`}
       >
-        <div className="grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-9 gap-0 mx-10">
+        <div className="grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-8 gap-0 mx-10">
           {images.map((image, index) => (
             <div
               key={index}
