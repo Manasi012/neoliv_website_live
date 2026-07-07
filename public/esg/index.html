@@ -31,300 +31,16 @@
     />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css" />
-
-    <!-- START: CSS Overrides to address size issues -->
-    <style>
-      /* General Typography Adjustments */
-      body {
-        font-family: "Poppins", sans-serif; /* Ensuring a consistent base font */
-        font-size: 16px; /* Standard base font size */
-        line-height: 1.6;
-        color: #333; /* A slightly softer black for body text */
-      }
-
-      h1,
-      .h1,
-      h2,
-      .h2,
-      h3,
-      .h3,
-      h4,
-      .h4,
-      h5,
-      .h5,
-      h6,
-      .h6 {
-        font-family: "Poppins", sans-serif; /* Or 'DM Sans' / 'Source Serif Pro' if preferred for headings */
-        font-weight: 600; /* Common weight for headings */
-      }
-
-      /* Hero Section Adjustments */
-      .hero-title {
-        font-size: 2.8rem; /* Reduced from potentially larger size */
-        font-weight: 700;
-        margin-bottom: 0.75rem;
-      }
-
-      .hero-subtitle {
-        font-size: 1.1rem; /* Reduced */
-        font-weight: 400;
-        line-height: 1.7;
-        max-width: 700px; /* Constrain width for readability */
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-buttons .btn-download,
-      .hero-buttons .btn-primary-green {
-        font-size: 0.9rem; /* Reduced button text size */
-        padding: 0.75rem 1.5rem; /* Adjusted padding */
-      }
-      .btn-primary-green {
-        font-weight: 500;
-      }
-
-      /* Vision Section Adjustments */
-      .section_padding {
-        /* Standardize section padding slightly */
-        padding-top: 60px;
-        padding-bottom: 60px;
-      }
-
-      #vision h2.head {
-        font-size: 2.2rem; /* Reduced */
-        margin-bottom: 1rem; /* Adjusted spacing */
-      }
-      #vision h2.head img {
-        /* Adjust eye icon size if needed */
-        width: 70px;
-        height: auto;
-        vertical-align: middle;
-      }
-
-      #vision .paragraph p.text-muted,
-      #vision .col-md-6 p.text-muted.paragraph {
-        font-size: 1rem; /* Standard paragraph size */
-        line-height: 1.7;
-      }
-      #vision .paragraph p.text-muted:first-of-type {
-        margin-bottom: 0.5rem; /* Tighter spacing between the two intro paragraphs */
-      }
-
-      /* Pillars Section Adjustments */
-      .pillars-section {
-        padding-top: 40px; /* Slightly reduced top padding */
-        padding-bottom: 60px;
-      }
-      .pillars-icon svg {
-        width: 70px; /* Reduced size of the pillar SVG icon */
-        height: auto;
-      }
-
-      .pillars-header .section-title {
-        /* Target H2 within pillars-header */
-        font-size: 2.2rem; /* Reduced */
-        margin-top: 0.5rem; /* Space between icon and title */
-        margin-bottom: 1rem;
-      }
-
-      .pillars-description-gradient {
-        font-size: 1rem; /* Standard paragraph size */
-        line-height: 1.7;
-        max-width: 800px; /* Constrain width */
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .pillars-fullwidth-image {
-        margin-top: 2rem;
-        margin-bottom: 2.5rem;
-      }
-
-      .bg-number-large {
-        font-size: 8rem; /* Significantly reduced background number size */
-        opacity: 0.07; /* Make them more subtle */
-      }
-
-      .pillar-card-final .pillar-title {
-        font-size: 1.3rem; /* Reduced pillar card title size */
-        font-weight: 600;
-        line-height: 1.4;
-      }
-      .pillar-card-final {
-        min-height: 320px; /* Adjust if cards feel too tall/short */
-      }
-
-      /* Promises Section Adjustments */
-      .promises-section {
-        padding-top: 60px;
-        padding-bottom: 60px;
-      }
-      .promise-tab span {
-        font-size: 0.95rem; /* Slightly reduced tab text */
-        font-weight: 500;
-      }
-      .promise-tab {
-        padding: 0.8rem 1rem; /* Adjust tab padding */
-      }
-
-      .promises-content .section-title {
-        /* Target H2 within promises-content */
-        font-size: 2.2rem; /* Reduced */
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-      }
-
-      .promises-description {
-        font-size: 1rem; /* Standard paragraph size */
-        max-width: 750px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 1.5rem;
-      }
-
-      .promise-tags .promise-tag {
-        font-size: 0.85rem; /* Smaller tags */
-        padding: 0.3rem 0.8rem;
-      }
-
-      .promise-item .promise-icon .icon-placeholder {
-        width: 50px; /* Adjust icon container size */
-        height: 50px;
-      }
-      .promise-item .promise-icon .icon-placeholder i {
-        font-size: 1.5rem; /* Adjust icon size */
-      }
-
-      .promise-item .promise-content h4 {
-        font-size: 1.15rem; /* Reduced promise item title */
-        font-weight: 600;
-        margin-bottom: 0.4rem;
-      }
-
-      .promise-item .promise-content p {
-        font-size: 0.9rem; /* Reduced promise item text */
-        line-height: 1.6;
-      }
-
-      /* Footer Adjustments */
-      .footer-section {
-        padding-top: 50px;
-        padding-bottom: 30px;
-      }
-      .footer-section-title h5 {
-        font-size: 1.1rem; /* Reduced footer titles */
-        font-weight: 600;
-        margin-bottom: 1rem;
-      }
-      .footer-links-list li a.footer-link {
-        font-size: 0.9rem; /* Reduced footer link text */
-      }
-      .social-links .social-link {
-        width: 36px; /* Smaller social icons */
-        height: 36px;
-        font-size: 0.9rem;
-      }
-
-      /* Header Adjustments */
-      .header {
-        padding-top: 0.5rem; /* Reduce header padding if it's too tall */
-        padding-bottom: 0.5rem;
-      }
-      .nav-link {
-        font-size: 0.95rem; /* Adjust nav link font size */
-        font-weight: 500;
-      }
-
-      /* Responsive adjustments for smaller screens */
-      @media (max-width: 991.98px) {
-        .hero-title {
-          font-size: 2.2rem;
-        }
-        .hero-subtitle {
-          font-size: 1rem;
-        }
-        #vision h2.head,
-        .pillars-header .section-title,
-        .promises-content .section-title {
-          font-size: 1.9rem;
-        }
-        .bg-number-large {
-          font-size: 6rem; /* Further reduce on medium screens */
-        }
-      }
-
-      @media (max-width: 767.98px) {
-        body {
-          font-size: 15px; /* Slightly smaller base for small devices */
-        }
-        .hero-title {
-          font-size: 1.8rem;
-        }
-        .hero-subtitle {
-          font-size: 0.95rem;
-        }
-        #vision h2.head,
-        .pillars-header .section-title,
-        .promises-content .section-title {
-          font-size: 1.7rem;
-        }
-        .pillar-card-final .pillar-title {
-          font-size: 1.15rem;
-        }
-        .promise-item .promise-content h4 {
-          font-size: 1.05rem;
-        }
-        .promise-item .promise-content p {
-          font-size: 0.85rem;
-        }
-        .section_padding,
-        .pillars-section,
-        .promises-section {
-          padding-top: 40px;
-          padding-bottom: 40px;
-        }
-        .bg-number-large {
-          display: none; /* Hide large background numbers on small screens if they cause clutter */
-        }
-      }
-     .icon-circle {
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-    font-weight: bold;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .policy-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #f1f1f1;
-  }
-
-  .policy-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  }
-
-  .icon-circle:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-  }
-    </style>
-    <!-- END: CSS Overrides -->
+    <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
 
   <body>
     <!-- Header -->
-    <header class="header">
+    <header class="header py-0">
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid px-4">
           <div class="navbar-brand">
             <div class="logo-placeholder"></div>
-            <!-- Added temp style for visibility -->
           </div>
 
           <button
@@ -378,13 +94,50 @@
           </p>
         </div>
 
-        <div class="hero-buttons" data-aos="fade-up" data-aos-delay="500">
+        <!-- <div class="hero-buttons" data-aos="fade-up" data-aos-delay="500">
           <button class="btn-download">
             <i class="fas fa-download me-2"></i>
-           <a href="./policies/NEOLIV_ESG Report_V9.pdf" target="_blank">
-             Download ESG Report
+           <a href="./esg-report/esg-report-2024-25.pdf" target="_blank">
+             Download ESG Report FY 2024-25
            </a>
           </button>
+
+            <a href="#vision" class="btn-primary-green">
+            Explore Our Vision
+            <i class="fas fa-arrow-right ms-2"></i>
+          </a>
+
+          <button class="btn-download">
+            <i class="fas fa-download me-2"></i>
+           <a href="./esg-report/esg-report-2025-26.pdf" target="_blank">
+             Download ESG Report FY 2025-26
+           </a>
+          </button>
+          
+        </div>  -->
+         <!-- <div class="mt-5">
+          <a href="#vision" class="btn-primary-green">
+            Explore Our Vision
+            <i class="fas fa-arrow-right ms-2"></i>
+          </a>
+        </div> -->
+
+        <div class="hero-buttons" data-aos="fade-up" data-aos-delay="500">
+          <a href="./esg-report.html">
+            <button class="btn-download">
+            <i class="fas fa-download me-2"></i>
+             Download ESG Report
+          </button>
+           </a>
+
+
+            <a href="./assurance-statement.html">
+          <button class="btn-download">
+            <i class="fas fa-download me-2"></i>
+             Assurance Statement 
+          </button>
+          </a>
+
           <a href="#vision" class="btn-primary-green">
             Explore Our Vision
             <i class="fas fa-arrow-right ms-2"></i>
@@ -396,7 +149,7 @@
     <!-- Vision Section - Copied from first document -->
     <section
       id="vision"
-      class="section_padding"
+      class="section_padding pb-0"
       style="background: linear-gradient(to bottom, #f3fcf8 0%, #ffffff 100%)"
     >
       <div class="container text-center mb-5">
@@ -772,7 +525,7 @@
 
   <div class="promise-item promise-item1">
     <div class="promise-icon">
-      <img src="https://magicpage-dev.propstory.com/ImageUploads/Image_Upload/1nnx5e6ylmcdapkga.jpg " alt="" class="w-100">
+      <img src="./assets/images/icons/1nnx5e6ylmcdapkga.jpg" alt="" class="w-100">
       <!-- <i class="fas fa-seedling"></i> -->
     </div>
     <div class="promise-content">
@@ -1084,8 +837,31 @@
               <h5>More Details</h5>
             </div>
             <ul class="footer-links-list">
-              <li><a href="./policies/NEOLIV_ESG Report_V9.pdf" class="footer-link">ESG Report</a></li>
-              <li><a href="./assets/GI240568-C.jpg" class="footer-link">IGBC Certificates</a></li>
+               <li><a href="./esg-report.html" target="_blank" class="footer-link">ESG Report</a></li>
+
+               <!-- <li><a href="./assets/images/IGBC/NeolivHeadoffice.jpg" target="_blank" class="footer-link">IGBC Certificates</a></li> -->
+
+
+                <li><a href="./assurance-statement.html" class="footer-link"> Assurance Statement</a></li>
+              <li class="dropdown">
+  <a href="javascript:void(0)" class="footer-link">
+    IGBC Certificates ▼
+  </a>
+
+  <ul class="dropdown-menu">
+    <li>
+      <a href="./assets/images/IGBC/NeolivHeadoffice.jpg" class="text-black" target="_blank">
+        Neoliv Head Office
+      </a>
+    </li> 
+
+    <li>
+      <a href="./assets/images/IGBC/NeolivClubhouse.jpg" class="text-black" target="_blank">
+        Neoliv Clubhouse
+      </a>
+    </li>
+  </ul>
+</li>
               <li>
                 <a href="#" class="footer-link">Awards and Recognition</a>
               </li>
@@ -1119,203 +895,7 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
-    <script>
-      // Initialize AOS
-      AOS.init({
-        duration: 800 /* Slightly faster animation */,
-        once: true,
-        offset: 80 /* Adjust offset */,
-      });
-
-      // Header scroll effect
-      window.addEventListener("scroll", () => {
-        const header = document.querySelector(".header");
-        if (window.scrollY > 80) {
-          /* Adjust scroll threshold */
-          header.classList.add("scrolled");
-        } else {
-          header.classList.remove("scrolled");
-        }
-      });
-
-      // Active navigation highlighting
-      window.addEventListener("scroll", () => {
-        const sections = document.querySelectorAll("section[id]");
-        const navLinks = document.querySelectorAll(".nav-link");
-
-        let current = "";
-        const scrollPosition = window.scrollY;
-        const headerHeight =
-          document.querySelector(".header")?.offsetHeight ||
-          70; /* Adjusted default */
-        const offset = headerHeight + 30; // Adjusted offset
-
-        sections.forEach((section) => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
-
-          if (
-            scrollPosition >= sectionTop - offset &&
-            scrollPosition < sectionTop + sectionHeight - offset
-          ) {
-            current = section.getAttribute("id");
-          }
-        });
-
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-          const href = link.getAttribute("href");
-          if (href === `#${current}`) {
-            link.classList.add("active");
-          }
-        });
-      });
-
-      // Enhanced scroll behavior with fallback for older browsers
-      function smoothScrollTo(target, offset = 0) {
-        const targetElement =
-          typeof target === "string" ? document.querySelector(target) : target;
-        if (!targetElement) return;
-
-        const targetPosition = targetElement.offsetTop - offset;
-        const startPosition = window.pageYOffset;
-        const distance = targetPosition - startPosition;
-        const duration = 600; /* Faster scroll */
-        let start = null;
-
-        function animation(currentTime) {
-          if (start === null) start = currentTime;
-          const timeElapsed = currentTime - start;
-          const run = ease(timeElapsed, startPosition, distance, duration);
-          window.scrollTo(0, run);
-          if (timeElapsed < duration) requestAnimationFrame(animation);
-        }
-
-        function ease(t, b, c, d) {
-          t /= d / 2;
-          if (t < 1) return (c / 2) * t * t + b;
-          t--;
-          return (-c / 2) * (t * (t - 2) - 1) + b;
-        }
-
-        requestAnimationFrame(animation);
-      }
-
-      // Utility function to close mobile navbar
-      function closeMobileNavbar() {
-        const navbarCollapse = document.querySelector(".navbar-collapse");
-        const navbarToggler = document.querySelector(".navbar-toggler");
-
-        if (navbarCollapse && navbarCollapse.classList.contains("show")) {
-          try {
-            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-            if (bsCollapse) {
-              bsCollapse.hide();
-              return 300;
-            }
-          } catch (e) {
-            console.warn("Bootstrap Collapse instance error:", e);
-          }
-
-          navbarCollapse.classList.remove("show");
-          // navbarCollapse.classList.add("collapse"); // This might re-trigger transition if not careful
-          if (navbarToggler) {
-            navbarToggler.setAttribute("aria-expanded", "false");
-            navbarToggler.classList.add("collapsed");
-          }
-          return 100;
-        }
-        return 0;
-      }
-
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute("href");
-          const target = document.querySelector(targetId);
-
-          if (target) {
-            const closeDelay = closeMobileNavbar();
-            setTimeout(() => {
-              const header = document.querySelector(".header");
-              let headerHeight = 70; /* Adjusted default */
-              if (header) {
-                headerHeight = header.offsetHeight;
-              }
-              let extraOffset = 10; /* Reduced extra offset */
-              // if (window.innerWidth <= 576) extraOffset = 50; // Kept larger for small screens if needed
-              // else if (window.innerWidth <= 768) extraOffset = 40;
-              // else if (window.innerWidth <= 992) extraOffset = 30;
-              const totalOffset = headerHeight + extraOffset;
-
-              if ("scrollBehavior" in document.documentElement.style) {
-                window.scrollTo({
-                  top: Math.max(0, target.offsetTop - totalOffset),
-                  behavior: "smooth",
-                });
-              } else {
-                smoothScrollTo(target, totalOffset);
-              }
-            }, closeDelay);
-          }
-        });
-      });
-
-      // Parallax effect for hero section (optional, can be demanding)
-      // Consider performance implications
-      // window.addEventListener("scroll", () => {
-      //   const scrolled = window.pageYOffset;
-      //   const parallax = document.querySelector(".hero-bg");
-      //   if (parallax) {
-      //     const speed = scrolled * 0.3; /* Reduced speed */
-      //     parallax.style.transform = `translateY(${speed}px)`;
-      //   }
-      // });
-
-      // Pillar Cards hover effects
-      const pillarCardsFinal = document.querySelectorAll(".pillar-card-final");
-      pillarCardsFinal.forEach((card) => {
-        card.addEventListener("mouseenter", function () {
-          this.style.transform =
-            "translateY(-6px)"; /* Slightly less movement */
-          this.style.transition = "transform 0.25s ease";
-        });
-        card.addEventListener("mouseleave", function () {
-          this.style.transform = "translateY(0)";
-        });
-      });
-
-      // Tab switching functionality
-      const promiseTabs = document.querySelectorAll(".promise-tab");
-      const tabContents = document.querySelectorAll(".tab-content");
-
-      promiseTabs.forEach((tab) => {
-        tab.addEventListener("click", function () {
-          const tabId = this.getAttribute("data-tab");
-          promiseTabs.forEach((t) => t.classList.remove("active"));
-          tabContents.forEach((content) => content.classList.remove("active"));
-          this.classList.add("active");
-          const activeContent = document.getElementById(`${tabId}-content`);
-          if (activeContent) {
-            activeContent.classList.add("active");
-            // Optionally re-initialize AOS for newly displayed content if elements were hidden
-            // AOS.refreshHard(); // Or selectively refresh AOS on elements within activeContent
-          }
-        });
-      });
-
-      // Download button handling
-      const downloadBtn = document.querySelector(".btn-download");
-      if (downloadBtn) {
-        downloadBtn.addEventListener("click", function () {
-          // alert(
-          //   "ESG Report download will begin shortly. Thank you for your interest!"
-          // );
-          // Example: window.location.href = '/path/to/your/esg-report.pdf';
-        });
-      }
-    </script>
+    <script src="./assets/js/custom.js"></script>
+   
   </body>
 </html>
