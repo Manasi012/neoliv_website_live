@@ -647,3 +647,51 @@ table td{
 .custom-padding {
   padding: 0.5rem !important;
 }
+.gptw-badge{
+    position: absolute;
+    top: 85px;
+    left: 80px;
+    z-index: 30;
+}
+
+.gptw-badge img{
+    width: 90px;
+    height: auto;
+}
+@media (max-width: 991px){
+    .gptw-badge{
+        top: 180px;
+        right: 25px;
+        left: unset;
+
+    }
+
+    .gptw-badge img{
+        width: 120px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px){
+    .gptw-badge{
+        top: 220px;
+        right: 18px;
+        left: unset;
+    }
+
+    .gptw-badge img{
+        width: 70px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 390px){
+    .gptw-badge{
+        top: 23%;
+        right: 14px;
+    }
+
+    .gptw-badge img{
+        width: 65px;
+    }
+}
